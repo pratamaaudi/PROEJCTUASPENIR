@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.android\build-cache\6c77475fd8c7a110552f064d3cd18bd442c87f41\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="E:\UASPENIR\app\build\intermediates\pre-dexed\debug\classes_90f8b189e32e8a9e2e7e6669c9f56f6f5a90de00.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.android\build-cache\afd9795e356b1cb87da223a40a2400f9e84ad0fe\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="E:\UASPENIR\app\build\intermediates\pre-dexed\debug\classes_f8c9a2cc55bd63276bad2f67e6b1c7ecea088f8c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.android\build-cache\7d9104628c98c1362dca2bc298f57b4dbb5cb595\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="E:\UASPENIR\app\build\intermediates\pre-dexed\debug\classes_b42f340ae2480b440dad45f516bfc6f32d7e6c39.jar" />
+    </item>
+
+</items>
