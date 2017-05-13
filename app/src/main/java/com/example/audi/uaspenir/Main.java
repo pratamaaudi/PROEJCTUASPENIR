@@ -2,14 +2,30 @@ package com.example.audi.uaspenir;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends AppCompatActivity {
 
@@ -48,6 +64,40 @@ public class Main extends AppCompatActivity {
             Bitmap image = (Bitmap) data.getExtras().get("data");
             ImageView imageview = (ImageView) findViewById(R.id.imglogo);
             imageview.setImageBitmap(image);
+
+            new PostTask().execute(imageToString(image),"test");
+            Toast.makeText(this, "asd", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private String imageToString(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] imgBytes = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(imgBytes, Base64.DEFAULT);
+    }
+    private class PostTask extends AsyncTask<String, String, String> {
+        HttpResponse response;
+        @Override
+        protected String doInBackground(String... data) {
+            // Create a new HttpClient and Post Header
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost("http://192.168.100.4/chooseit/uploadimage.php");
+
+            try {
+                //add data
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("image", data[0]));
+                nameValuePairs.add(new BasicNameValuePair("name", data[1]));
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                //execute http post
+                response = httpclient.execute(httppost);
+
+            } catch (ClientProtocolException e) {
+
+            } catch (IOException e) {
+
+            }
+            return response.toString();
         }
     }
 }
