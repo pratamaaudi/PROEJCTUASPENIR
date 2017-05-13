@@ -1,5 +1,6 @@
 package com.example.audi.uaspenir;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -77,6 +78,18 @@ public class Main extends AppCompatActivity {
     }
     private class PostTask extends AsyncTask<String, String, String> {
         HttpResponse response;
+        private ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(Main.this);
+            pDialog.setMessage("Uploading Photo. Please wait...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
         @Override
         protected String doInBackground(String... data) {
             // Create a new HttpClient and Post Header
@@ -98,6 +111,12 @@ public class Main extends AppCompatActivity {
 
             }
             return response.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            pDialog.dismiss();
         }
     }
 }
