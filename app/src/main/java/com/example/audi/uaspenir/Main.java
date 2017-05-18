@@ -4,13 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -56,8 +54,8 @@ public class Main extends AppCompatActivity {
         startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
     }
 
-    public void buatsnackbar(View view) {
-        Snackbar.make(view, "LOGO ditekan!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    public void buatsnackbar(String text) {
+        Snackbar.make(getWindow().getDecorView().getRootView(), text, Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -67,7 +65,7 @@ public class Main extends AppCompatActivity {
             imageview.setImageBitmap(image);
 
             new PostTask().execute(imageToString(image),"test");
-            Toast.makeText(this, "asd", Toast.LENGTH_SHORT).show();
+            buatsnackbar("Uploading image . . .");
         }
     }
     private String imageToString(Bitmap bitmap) {
@@ -94,7 +92,7 @@ public class Main extends AppCompatActivity {
         protected String doInBackground(String... data) {
             // Create a new HttpClient and Post Header
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://192.168.100.4/chooseit/uploadimage.php");
+            HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/upload.php");
 
             try {
                 //add data
