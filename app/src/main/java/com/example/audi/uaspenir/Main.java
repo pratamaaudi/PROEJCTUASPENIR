@@ -41,7 +41,7 @@ public class Main extends AppCompatActivity {
         finishAffinity();
     }
 
-    public void logoclick(View view) {
+    public void ambilfoto(View view) {
         //buatsnackbar(view);
 
         //Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
