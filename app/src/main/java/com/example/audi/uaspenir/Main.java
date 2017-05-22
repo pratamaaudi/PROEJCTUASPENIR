@@ -117,4 +117,9 @@ public class Main extends AppCompatActivity {
             pDialog.dismiss();
         }
     }
+
+    public void pindahhalaman(View view){
+        Intent i = new Intent(this, gif.class);
+        startActivity(i);
+    }
 }

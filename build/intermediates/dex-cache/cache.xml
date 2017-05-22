@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.android\build-cache\d14dbe9ee27ca372c6d4d7ce15185f53bdf8ef73\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d9f58e509a3ff5b601c11ab5ec588c96f9eb82b2">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\classes_a9e0be188ecb80a510f74bc31678785d0e544d5e.jar" />
+    </item>
+
+</items>
