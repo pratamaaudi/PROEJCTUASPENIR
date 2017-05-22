@@ -41,7 +41,7 @@ public class Main extends AppCompatActivity {
         finishAffinity();
     }
 
-    public void logoclick(View view) {
+    public void ambilfoto(View view) {
         //buatsnackbar(view);
 
         //Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
@@ -116,5 +116,10 @@ public class Main extends AppCompatActivity {
             super.onPostExecute(s);
             pDialog.dismiss();
         }
+    }
+
+    public void pindahhalaman(View view){
+        Intent i = new Intent(this, gif.class);
+        startActivity(i);
     }
 }
