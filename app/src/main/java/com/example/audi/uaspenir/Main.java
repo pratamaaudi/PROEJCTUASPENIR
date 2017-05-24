@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,12 +31,52 @@ import java.util.List;
 
 public class Main extends AppCompatActivity {
 
+    //viewpage
+    public ViewPager vp;
+    public TabLayout tabs;
+
     final int CAMERA_PIC_REQUEST=1333;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //viewpage
+        vp = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(vp);
+
+        tabs = (TabLayout) findViewById(R.id.tabs);
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                vp.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {       }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {     }
+        });
+
+        vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+
+            @Override
+            public void onPageSelected(int position) {
+                TabLayout.Tab tab = tabs.getTabAt(position);
+                tab.select();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {    }
+        });
+
     }
 
     @Override
@@ -52,6 +95,15 @@ public class Main extends AppCompatActivity {
 
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
+    }
+
+    private void setupViewPager(ViewPager vp) {
+        Adapter adapter = new Adapter(getSupportFragmentManager());
+        adapter.addFragment(new ListContentFragment());
+        adapter.addFragment(new TileContentFragment());
+        adapter.addFragment(new CardContentFragment());
+
+        vp.setAdapter(adapter);
     }
 
     public void buatsnackbar(String text) {
