@@ -1,6 +1,7 @@
 package com.example.audi.uaspenir;
 
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +11,13 @@ import android.view.Window;
 
 public class Splash extends AppCompatActivity {
 
+    private static final int CAMERA_REQUEST_CODE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.CAMERA},CAMERA_REQUEST_CODE);
     }
 
     public void animate(View view) {

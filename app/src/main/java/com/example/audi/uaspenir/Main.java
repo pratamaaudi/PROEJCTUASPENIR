@@ -13,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -76,7 +75,6 @@ public class Main extends AppCompatActivity {
             @Override
             public void onPageScrollStateChanged(int state) {    }
         });
-
     }
 
     @Override
