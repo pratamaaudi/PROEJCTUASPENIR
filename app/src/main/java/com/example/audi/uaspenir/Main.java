@@ -1,6 +1,7 @@
 package com.example.audi.uaspenir;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -22,6 +23,9 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -34,12 +38,23 @@ public class Main extends AppCompatActivity {
     public ViewPager vp;
     public TabLayout tabs;
 
-    final int CAMERA_PIC_REQUEST=1333;
+    final int CAMERA_PIC_REQUEST = 1333;
+
+    public static ArrayList<category> categoryArrayList;
+    public static ArrayList<image> imageArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imageArrayList = new ArrayList<>();
+
+        ReadData readCategory = new ReadData(this);
+        readCategory.execute(OwnLibrary.url_category, "category");
+
+        ReadData readImage = new ReadData(this);
+        readImage.execute(OwnLibrary.url_image, "image");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,15 +71,18 @@ public class Main extends AppCompatActivity {
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {       }
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {     }
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
         });
 
         vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             @Override
             public void onPageSelected(int position) {
@@ -73,8 +91,47 @@ public class Main extends AppCompatActivity {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {    }
+            public void onPageScrollStateChanged(int state) {
+            }
         });
+
+    }
+
+    public static void readDataFinish(Context context, String result, String type) {
+        if (type.equalsIgnoreCase("category")) {
+            try {
+                JSONObject json = new JSONObject(result);
+                JSONArray json2 = json.getJSONArray("post");
+                categoryArrayList = new ArrayList<>();
+                for (int i = 0; i < json2.length(); i++) {
+                    JSONObject c = json2.getJSONObject(i);
+                    String categoryId = c.getString("categoryID");
+                    String categoryName = c.getString("categoryName");
+                    categoryArrayList.add(new category(Integer.parseInt(categoryId), categoryName));
+                }
+                new OwnLibrary().toastLong(context, "Size Arraylist category : " + categoryArrayList.size());
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else if (type.equalsIgnoreCase("image")) {
+            try {
+                JSONObject json = new JSONObject(result);
+                JSONArray json2 = json.getJSONArray("post");
+                imageArrayList = new ArrayList<>();
+                for (int i = 0; i < json2.length(); i++) {
+                    JSONObject c = json2.getJSONObject(i);
+                    String imageID = c.getString("imageID");
+                    String imagename = c.getString("imagename");
+                    String ekstensi = c.getString("ekstensi");
+                    String category_categoryID = c.getString("Category_categoryID");
+                    imageArrayList.add(new image(Integer.parseInt(imageID), imagename, ekstensi, Integer.parseInt(category_categoryID)));
+                }
+                new OwnLibrary().toastLong(context, "Size Arraylist image : " + imageArrayList.size());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -114,18 +171,19 @@ public class Main extends AppCompatActivity {
             ImageView imageview = (ImageView) findViewById(R.id.imglogo);
             imageview.setImageBitmap(image);
 
-            new PostTask().execute(imageToString(image),"test");
+            new PostTask().execute(imageToString(image), "test");
             buatsnackbar("Uploading image . . .");
         }
     }
+
     private String imageToString(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
     }
+
     private class PostTask extends AsyncTask<String, String, String> {
-        HttpResponse response;
         private ProgressDialog pDialog;
 
         @Override
@@ -151,14 +209,14 @@ public class Main extends AppCompatActivity {
                 nameValuePairs.add(new BasicNameValuePair("name", data[1]));
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 //execute http post
-                response = httpclient.execute(httppost);
+                HttpResponse response = httpclient.execute(httppost);
 
             } catch (ClientProtocolException e) {
 
             } catch (IOException e) {
 
             }
-            return response.toString();
+            return null;
         }
 
         @Override
@@ -168,7 +226,7 @@ public class Main extends AppCompatActivity {
         }
     }
 
-    public void pindahhalaman(View view){
+    public void pindahhalaman(View view) {
         Intent i = new Intent(this, gif.class);
         startActivity(i);
     }
