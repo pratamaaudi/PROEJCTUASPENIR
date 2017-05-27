@@ -42,13 +42,18 @@ public class Main extends AppCompatActivity {
 
     public static ArrayList<category> categoryArrayList;
     public static ArrayList<image> imageArrayList;
+    public static Main instance  = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        instance = this;
         imageArrayList = new ArrayList<>();
+        categoryArrayList = new ArrayList<>();
+
+        imageArrayList.add(new image(1,"asd","asd",1));
 
         ReadData readCategory = new ReadData(this);
         readCategory.execute(OwnLibrary.url_category, "category");
@@ -61,7 +66,6 @@ public class Main extends AppCompatActivity {
 
         //viewpage
         vp = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(vp);
 
         tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -132,6 +136,7 @@ public class Main extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        instance.setupViewPager();
     }
 
     @Override
@@ -152,13 +157,16 @@ public class Main extends AppCompatActivity {
         startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
     }
 
-    private void setupViewPager(ViewPager vp) {
-        Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ListContentFragment());
-        adapter.addFragment(new TileContentFragment());
-        adapter.addFragment(new CardContentFragment());
+    private void setupViewPager() {
+        CardContentFragment cardContentFragment = new CardContentFragment();
+        cardContentFragment.mInstance(getApplicationContext(),imageArrayList);
 
-        vp.setAdapter(adapter);
+        AdapterPager adapterPager = new AdapterPager(getSupportFragmentManager());
+        adapterPager.addFragment(new ListContentFragment());
+        adapterPager.addFragment(new TileContentFragment());
+        adapterPager.addFragment(cardContentFragment);
+
+        vp.setAdapter(adapterPager);
     }
 
     public void buatsnackbar(String text) {
