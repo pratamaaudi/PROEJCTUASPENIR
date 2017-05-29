@@ -64,6 +64,8 @@ public class Main extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        int height = this.getResources().getDisplayMetrics().heightPixels;
+
         //viewpage
         vp = (ViewPager) findViewById(R.id.viewpager);
 
@@ -83,6 +85,8 @@ public class Main extends AppCompatActivity {
             }
         });
 
+
+
         vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -97,6 +101,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onPageScrollStateChanged(int state) {
             }
+
         });
 
     }

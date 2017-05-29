@@ -57,7 +57,10 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<RecyclerView.ViewH
         } catch (IOException e) {
             e.printStackTrace();
         }*/
-        imageView.setImageResource(R.drawable.cover);
+        imageView.setImageResource(R.drawable.vert);
+
+
+
     }
 
     @Override
