@@ -46,18 +46,16 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<RecyclerView.ViewH
         TextView title = (TextView) holder.itemView.findViewById(R.id.title_card);
         ImageView imageView = (ImageView) holder.itemView.findViewById(R.id.image_card);
         title.setText(images.get(position).getImagename());
-        /*
         URL url = null;
         try {
-            url = new URL("url");
+            url = new URL("http://103.52.146.34/penir/penir13/IMAGE/"+images.get(position).getImagename()+images.get(position).getEkstensi());
             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             imageView.setImageBitmap(bmp);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
-        imageView.setImageResource(R.drawable.cover);
+        }
     }
 
     @Override
