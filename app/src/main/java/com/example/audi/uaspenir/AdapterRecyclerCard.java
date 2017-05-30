@@ -31,7 +31,7 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_card_content_inflate, parent, false);
-        RecyclerView.ViewHolder vhold = new RecyclerView.ViewHolder(v){
+        RecyclerView.ViewHolder vhold = new RecyclerView.ViewHolder(v) {
             @Override
             public String toString() {
                 return super.toString();
@@ -48,22 +48,14 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<RecyclerView.ViewH
         title.setText(images.get(position).getImagename());
         URL url = null;
         try {
-            url = new URL("http://103.52.146.34/penir/penir13/IMAGE/"+images.get(position).getImagename()+images.get(position).getEkstensi());
+            url = new URL("http://103.52.146.34/penir/penir13/IMAGE/" + images.get(position).getImagename() + images.get(position).getEkstensi());
             Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             imageView.setImageBitmap(bmp);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-<<<<<<< HEAD
         }
-=======
-        }*/
-        imageView.setImageResource(R.drawable.vert);
-
-
-
->>>>>>> origin/master
     }
 
     @Override
