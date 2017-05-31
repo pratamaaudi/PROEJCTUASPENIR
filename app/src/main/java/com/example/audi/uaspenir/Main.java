@@ -166,9 +166,18 @@ public class Main extends AppCompatActivity {
         startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
     }
 
+    AdapterRecyclerCard adapterRecyclerCard;
+
     private void setupViewPager() {
         CardContentFragment cardContentFragment = new CardContentFragment();
-        cardContentFragment.mInstance(getApplicationContext(),imageArrayList);
+        adapterRecyclerCard = new AdapterRecyclerCard(getApplicationContext(), imageArrayList, new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                //do something here with the position
+                new OwnLibrary().toastShort(getApplicationContext(), "Position : "+position);
+            }
+        });
+        cardContentFragment.mInstance(adapterRecyclerCard);
 
         AdapterPager adapterPager = new AdapterPager(getSupportFragmentManager());
         adapterPager.addFragment(new ListContentFragment());

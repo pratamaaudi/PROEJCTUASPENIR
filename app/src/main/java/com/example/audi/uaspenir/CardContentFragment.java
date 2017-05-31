@@ -26,9 +26,9 @@ public class CardContentFragment extends Fragment {
     RecyclerView recyclerView;
     AdapterRecyclerCard adapterRecyclerCard;
 
-    public CardContentFragment mInstance(Context context, ArrayList<image> images){
+    public CardContentFragment mInstance(AdapterRecyclerCard adapterRecyclerCard){
         CardContentFragment cardContentFragment = new CardContentFragment();
-        adapterRecyclerCard = new AdapterRecyclerCard(context, images);
+        this.adapterRecyclerCard = adapterRecyclerCard;
         return cardContentFragment;
     }
 
