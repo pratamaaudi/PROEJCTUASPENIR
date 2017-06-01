@@ -1,13 +1,8 @@
 <component name="libraryTable">
   <library name="android-gif-drawable-1.2.7">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="file://$USER_HOME$/.android/build-cache/a8984a28c1a9142fb000bb06369e78dae836e9c8/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/a8984a28c1a9142fb000bb06369e78dae836e9c8/output/jars/classes.jar!/" />
-=======
-      <root url="jar://$USER_HOME$/.android/build-cache/2127bb2586472b353af8401961a475467a0216e6/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/2127bb2586472b353af8401961a475467a0216e6/output/res" />
->>>>>>> origin/master
+      <root url="jar://$USER_HOME$/.android/build-cache/875f3e789984cbc97db4ad5393249d406eba4486/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/875f3e789984cbc97db4ad5393249d406eba4486/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
