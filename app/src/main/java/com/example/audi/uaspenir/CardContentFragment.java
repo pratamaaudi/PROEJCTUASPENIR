@@ -42,6 +42,7 @@ public class CardContentFragment extends Fragment {
         recyclerView.setLayoutManager(llm);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapterRecyclerCard);
+        recyclerView.setNestedScrollingEnabled(true);
 		return view;
 
     }

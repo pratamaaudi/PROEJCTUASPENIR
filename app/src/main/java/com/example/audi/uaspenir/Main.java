@@ -8,6 +8,9 @@ import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,7 +46,7 @@ public class Main extends AppCompatActivity {
 
     public static ArrayList<category> categoryArrayList;
     public static ArrayList<image> imageArrayList;
-    public static Main instance  = null;
+    public static Main instance = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,9 @@ public class Main extends AppCompatActivity {
         imageArrayList = new ArrayList<>();
         categoryArrayList = new ArrayList<>();
 
-        imageArrayList.add(new image(1,"asd","asd",1));
+        imageArrayList.add(new image(1, "asd", "asd", 1));
+
+
 
         ReadData readCategory = new ReadData(this);
         readCategory.execute(OwnLibrary.url_category, "category");
@@ -88,7 +93,6 @@ public class Main extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-
 
 
         vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -172,9 +176,17 @@ public class Main extends AppCompatActivity {
         CardContentFragment cardContentFragment = new CardContentFragment();
         adapterRecyclerCard = new AdapterRecyclerCard(getApplicationContext(), imageArrayList, new OnRecyclerItemClickListener() {
             @Override
-            public void onItemClick(View v, int position) {
+            public void onItemClick(View v, int position, ImageView image_post) {
                 //do something here with the position
-                new OwnLibrary().toastShort(getApplicationContext(), "Position : "+position);
+                new OwnLibrary().toastShort(getApplicationContext(), "Position : " + position);
+
+                Intent i = new Intent(Main.this, detail_image.class);
+                i.putExtra("transition_name", ViewCompat.getTransitionName(image_post));
+                i.putExtra("nama_gambar", imageArrayList.get(position).getImagename());
+                i.putExtra("ekstensi_gambar", imageArrayList.get(position).getEkstensi());
+
+                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, image_post, ViewCompat.getTransitionName(image_post));
+                startActivity(i, option.toBundle());
             }
         });
         cardContentFragment.mInstance(adapterRecyclerCard);
@@ -193,12 +205,14 @@ public class Main extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_PIC_REQUEST) {
-            Bitmap image = (Bitmap) data.getExtras().get("data");
-            ImageView imageview = (ImageView) findViewById(R.id.imglogo);
-            imageview.setImageBitmap(image);
+            if (data != null) {
+                Bitmap image = (Bitmap) data.getExtras().get("data");
+                ImageView imageview = (ImageView) findViewById(R.id.imglogo);
+                imageview.setImageBitmap(image);
 
-            new PostTask().execute(imageToString(image), "test");
-            buatsnackbar("Uploading image . . .");
+                new PostTask().execute(imageToString(image), "test");
+                buatsnackbar("Uploading image . . .");
+            }
         }
     }
 
