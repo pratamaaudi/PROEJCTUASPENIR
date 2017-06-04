@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -54,22 +56,14 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
         holder.title.setText(images.get(position).getImagename());
         URL url = null;
 
+        Picasso.with(context).load("http://103.52.146.34/penir/penir13/IMAGE/" + images.get(position).getImagename() + images.get(position).getEkstensi()).into(holder.imageView);
 
-        try {
-            url = new URL("http://103.52.146.34/penir/penir13/IMAGE/" + images.get(position).getImagename() + images.get(position).getEkstensi());
-            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            holder.imageView.setImageBitmap(bmp);
-            holder.btncomment.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    loadkomen(images, position);
-                }
-            });
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        holder.btncomment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadkomen(images, position);
+            }
+        });
 
         ViewCompat.setTransitionName(holder.imageView, images.get(position).getImagename());
     }
