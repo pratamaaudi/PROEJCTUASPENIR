@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.squareup\javapoet\1.8.0\e858dc62ef484048540d27d36f3ec2177a3fa9b1\javapoet-1.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e858dc62ef484048540d27d36f3ec2177a3fa9b1">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\javapoet-1.8.0_fcc7f675d0607a0639df45e98712355ca90f5e4f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\picasso-2.5.2_099e2d022c745973d10844f8c53d79a99fcee64b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\gifdecoder\4.0.0-RC0\c64f5d4805b528de434a5a8bb9a8091b6f9cd1a7\gifdecoder-4.0.0-RC0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c64f5d4805b528de434a5a8bb9a8091b6f9cd1a7">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\gifdecoder-4.0.0-RC0_b42c40e0bf3bfcc042d1870b3916f6ab871b9b49.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.google.auto\auto-common\0.3\4073ab16ab4aceb9a217273da6442166bf51ae16\auto-common-0.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4073ab16ab4aceb9a217273da6442166bf51ae16">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\auto-common-0.3_ddcb8ddcf393d8ac8675769744b43bb78fc1122e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.google.auto.service\auto-service\1.0-rc3\35c5d43b0332b8f94d473f9fee5fb1d74b5e0056\auto-service-1.0-rc3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="35c5d43b0332b8f94d473f9fee5fb1d74b5e0056">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\auto-service-1.0-rc3_84412cad5e3feaac2358f6a2ba72833d5d8d20bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\19.0\6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9\guava-19.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\guava-19.0_c0b6b221ce63da94b79ed3c77997ec783a7103cb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\4.0.0-RC0\3702a48f7e4eb3f6c16492242201bcbdaf0919d4\glide-4.0.0-RC0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3702a48f7e4eb3f6c16492242201bcbdaf0919d4">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\glide-4.0.0-RC0_6d049662254094d6926fc50551db79d331719a0e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\disklrucache\4.0.0-RC0\619afce79bb3db4ae371eb15086569f7979c9258\disklrucache-4.0.0-RC0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="619afce79bb3db4ae371eb15086569f7979c9258">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\disklrucache-4.0.0-RC0_7285111982fbe9f81c4952a78f619cd2192fe8c7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\annotations\4.0.0-RC0\c57b296f7b7fc5a2bc865ac885b4425a3e1c8e3a\annotations-4.0.0-RC0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c57b296f7b7fc5a2bc865ac885b4425a3e1c8e3a">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\annotations-4.0.0-RC0_538fd46f016bdab1e260a58a0749a1fe1aa90791.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.1\f7be08ec23c21485b9b5a1cf1654c2ec8c58168d\jsr305-3.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f7be08ec23c21485b9b5a1cf1654c2ec8c58168d">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\jsr305-3.0.1_e25bd305f8ac91316b209193de76d3979aaf0850.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Audi\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\compiler\4.0.0-RC0\5d40c95f65bdb7c253da90bf27cbfd1e867c9358\compiler-4.0.0-RC0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5d40c95f65bdb7c253da90bf27cbfd1e867c9358">
+        <dex dex="E:\PROEJCTUASPENIR\app\build\intermediates\pre-dexed\debug\compiler-4.0.0-RC0_cfdbdd895783f027fa23eac03bf85f74b357040f.jar" />
+    </item>
+
+</items>

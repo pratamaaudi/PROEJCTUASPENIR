@@ -7,13 +7,12 @@
     android:background="@color/black"
     tools:context="com.example.audi.uaspenir.detail_image">
 
-    <android.support.v7.widget.AppCompatImageView
+
+    <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
-        android:visibility="visible"
-        app:srcCompat="@drawable/cover" />
-
+        android:layout_weight="1"
+        app:srcCompat="@drawable/cover"
+        android:adjustViewBounds="true"/>
 </LinearLayout>

@@ -9,7 +9,9 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,16 +31,31 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/image_card"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/title_card"
-                android:adjustViewBounds="true"
-                android:background="@color/colorAccent"
-                android:elevation="1dp"
-                android:src="@drawable/cover"
-                app:srcCompat="@drawable/cover"/>
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgplay"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:elevation="5dp"
+                    app:srcCompat="@drawable/ic_play_circle_outline_black_24dp"
+                    android:visibility="invisible"/>
+
+                <ImageView
+                    android:id="@+id/image_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/title_card"
+                    android:adjustViewBounds="true"
+                    android:background="@color/blu_grey_400"
+                    android:elevation="1dp"
+                    android:src="@drawable/cover"
+                    app:srcCompat="@drawable/cover" />
+
+            </FrameLayout>
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -48,9 +65,10 @@
                 android:paddingTop="2dp">
 
                 <Button
-                    android:layout_width="75dp"
+                    android:layout_width="88dp"
                     android:layout_height="50dp"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="92dp"
                     android:layout_marginRight="92dp"
                     android:layout_marginTop="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -59,9 +77,10 @@
 
                 <Button
                     android:id="@+id/btncomment"
-                    android:layout_width="75dp"
+                    android:layout_width="88dp"
                     android:layout_height="50dp"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"

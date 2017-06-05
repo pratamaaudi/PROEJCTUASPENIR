@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onRecyclerItemClickListener.onItemClick(v, mViewHolder.getPosition(), mViewHolder.imageView);
+                onRecyclerItemClickListener.onItemClick(v, mViewHolder.getPosition(), mViewHolder.image_card);
             }
         });
 
@@ -53,10 +54,16 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
 
     @Override
     public void onBindViewHolder(final AdapterRecyclerCard.ViewHolder holder, final int position) {
+        if(images.get(position).getEkstensi().equals(".gif")){
+            holder.imgplay.setVisibility(View.VISIBLE);
+            holder.image_card.setImageAlpha(130);
+        } else {
+            holder.imgplay.setVisibility(View.INVISIBLE);
+            holder.image_card.setImageAlpha(255);
+        }
         holder.title.setText(images.get(position).getImagename());
-        URL url = null;
 
-        Picasso.with(context).load("http://103.52.146.34/penir/penir13/IMAGE/" + images.get(position).getImagename() + images.get(position).getEkstensi()).into(holder.imageView);
+        Picasso.with(context).load("http://103.52.146.34/penir/penir13/IMAGE/" + images.get(position).getImagename() + images.get(position).getEkstensi()).into(holder.image_card);
 
         holder.btncomment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +72,9 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
             }
         });
 
-        ViewCompat.setTransitionName(holder.imageView, images.get(position).getImagename());
+
+
+        ViewCompat.setTransitionName(holder.image_card, images.get(position).getImagename());
     }
 
     @Override
@@ -75,13 +84,14 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
-        public ImageView imageView;
+        public ImageView image_card, imgplay;
         public Button btncomment;
 
         ViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title_card);
-            imageView = (ImageView) itemView.findViewById(R.id.image_card);
+            image_card = (ImageView) itemView.findViewById(R.id.image_card);
+            imgplay = (ImageView) itemView.findViewById(R.id.imgplay);
             btncomment = (Button) itemView.findViewById(R.id.btncomment);
         }
     }
