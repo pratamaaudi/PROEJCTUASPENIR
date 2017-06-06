@@ -22,7 +22,8 @@
         <activity android:name=".Main" />
         <activity android:name=".gif" />
         <activity android:name=".detail_image" />
-        <activity android:name=".dummy_comment"></activity>
+        <activity android:name=".dummy_comment" />
+        <activity android:name=".Login"></activity>
     </application>
 
 </manifest>
