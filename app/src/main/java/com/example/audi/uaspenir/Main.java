@@ -12,8 +12,10 @@ import android.support.transition.Transition;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.util.Pair;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -57,6 +59,8 @@ public class Main extends AppCompatActivity {
 
     public Bitmap image;
 
+    public DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,8 @@ public class Main extends AppCompatActivity {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer);
 
         instance = this;
         imageArrayList = new ArrayList<>();
@@ -281,8 +287,14 @@ public class Main extends AppCompatActivity {
     }
 
     public void pindahhalaman(View view) {
-        Intent i = new Intent(this, gif.class);
-        startActivity(i);
+        //Intent i = new Intent(this, gif.class);
+        //startActivity(i);
+
+        drawer.openDrawer(GravityCompat.START);
+    }
+
+    public void lordmoses(View view){
+        buatsnackbar("ALL HAIL LORD MOSES !!!!");
     }
 
     @Override
