@@ -22,14 +22,8 @@
         <activity android:name=".Main" />
         <activity android:name=".gif" />
         <activity android:name=".detail_image" />
-<<<<<<< HEAD
         <activity android:name=".dummy_comment" />
         <activity android:name=".Login"></activity>
-=======
-        <activity android:name=".detail_comment" />
-        <activity android:name=".Login" />
-        <activity android:name=".SignUp" />
->>>>>>> master
     </application>
 
 </manifest>
