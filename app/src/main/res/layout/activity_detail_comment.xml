@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    tools:context="com.example.audi.uaspenir.detail_comment"
     android:weightSum="1">
 
     <TextView
@@ -18,27 +19,20 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="33dp" />
+        android:layout_weight="0.98" />
 
     <EditText
         android:id="@+id/pltComment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Write a comment. . ."
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="58dp" />
+        android:hint="Write a comment . . ."
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btnPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="POST"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="58dp" />
-
-
+        android:text="POST" />
 </LinearLayout>
