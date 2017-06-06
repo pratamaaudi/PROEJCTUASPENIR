@@ -10,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.transition.Transition;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
@@ -44,11 +45,17 @@ public class Main extends AppCompatActivity {
     public ViewPager vp;
     public TabLayout tabs;
 
+    private boolean dialog;
+
     final int CAMERA_PIC_REQUEST = 1333;
 
     public static ArrayList<category> categoryArrayList;
     public static ArrayList<image> imageArrayList;
     public static Main instance = null;
+
+    public post post;
+
+    public Bitmap image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,12 +218,14 @@ public class Main extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_PIC_REQUEST) {
             if (data != null) {
-                Bitmap image = (Bitmap) data.getExtras().get("data");
-                ImageView imageview = (ImageView) findViewById(R.id.imglogo);
-                imageview.setImageBitmap(image);
+                image = (Bitmap) data.getExtras().get("data");
+                //ImageView imageview = (ImageView) findViewById(R.id.imglogo);
+                //imageview.setImageBitmap(image);
 
-                new PostTask().execute(imageToString(image), "test");
-                buatsnackbar("Uploading image . . .");
+                //new PostTask().execute(imageToString(image), "test");
+                //buatsnackbar("Uploading image . . .");
+
+                dialog = true;
             }
         }
     }
@@ -274,5 +283,28 @@ public class Main extends AppCompatActivity {
     public void pindahhalaman(View view) {
         Intent i = new Intent(this, gif.class);
         startActivity(i);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (dialog) {
+            Bundle b = new Bundle();
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byte[] imgBytes = byteArrayOutputStream.toByteArray();
+
+            b.putByteArray("image", imgBytes);
+
+            FragmentManager fm = getSupportFragmentManager();
+            post = new post();
+            post.setArguments(b);
+
+            post.show(fm, "post new meme");
+
+            dialog = false;
+        }
     }
 }
