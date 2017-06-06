@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.transition.Transition;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
@@ -15,6 +16,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.transition.TransitionInflater;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
@@ -111,6 +113,9 @@ public class Main extends AppCompatActivity {
             }
 
         });
+
+        android.transition.Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_left);
+        getWindow().setExitTransition(transition);
 
     }
 

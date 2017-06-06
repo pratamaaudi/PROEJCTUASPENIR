@@ -1,16 +1,19 @@
 package com.example.audi.uaspenir;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.test.mock.MockContentResolver;
 import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -29,8 +32,6 @@ import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
 public class detail_image extends AppCompatActivity {
-
-    int GIF_LENGTH = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,9 @@ public class detail_image extends AppCompatActivity {
         final ImageView image = (ImageView) findViewById(R.id.image);
         image.setTransitionName(imageTransitionName);
         image.setImageBitmap(bmp);
+
+        Transition a = TransitionInflater.from(this).inflateTransition(R.transition.slide_right);
+        getWindow().setEnterTransition(a);
 
         supportStartPostponedEnterTransition();
 
@@ -98,5 +102,11 @@ public class detail_image extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void comment(View view){
+        Intent i = new Intent(this, dummy_comment.class);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+        startActivity(i, options.toBundle());
     }
 }

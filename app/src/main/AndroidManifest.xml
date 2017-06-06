@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".Main" />
         <activity android:name=".gif" />
-        <activity android:name=".detail_image"></activity>
+        <activity android:name=".detail_image" />
+        <activity android:name=".dummy_comment"></activity>
     </application>
 
 </manifest>
