@@ -2,7 +2,7 @@ package com.example.audi.uaspenir;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
         txtpassword = (EditText) findViewById(R.id.input_password);
 
         //dikasi progress dialog biar ga di spam atau di interupt
-        ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+        ProgressDialog progressDialog = new ProgressDialog(Login.this);
         progressDialog.setMessage("Loading..");
         progressDialog.setCancelable(false);
         progressDialog.show();
@@ -59,6 +59,19 @@ public class Login extends AppCompatActivity {
             HttpResponse response = httpclient.execute(httppost);
             String json = EntityUtils.toString(response.getEntity());
             //do something with json
+
+            String nama = "nama";
+
+            if(json.equals("true")){
+                Main.login = true;
+                Intent i = new Intent(Login.this, Main.class);
+                Pair<View, String> p1 = Pair.create(findViewById(R.id.imglogo), "imglogo");
+                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Login.this, p1);
+                startActivity(i, option.toBundle());
+            } else {
+                buatsnackbar("username atau password tidak benar");
+            }
+
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -75,5 +88,9 @@ public class Login extends AppCompatActivity {
         Pair<View, String> p4 = Pair.create(findViewById(R.id.btn_login), "button");
         ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(this, p1, p2, p3, p4);
         startActivity(i, option.toBundle());
+    }
+
+    public void buatsnackbar(String text) {
+        Snackbar.make(getWindow().getDecorView().getRootView(), text, Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 }

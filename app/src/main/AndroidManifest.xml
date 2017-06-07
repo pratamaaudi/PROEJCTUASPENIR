@@ -6,8 +6,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:screenOrientation="portrait"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/moses"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -19,12 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main" />
+        <activity android:name=".Main"
+            android:screenOrientation="portrait"/>
         <activity android:name=".gif" />
-        <activity android:name=".detail_image" />
+        <activity android:name=".detail_image"
+            android:screenOrientation="portrait"/>
         <activity android:name=".dummy_comment" />
         <activity android:name=".SignUp" />
-        <activity android:name=".Login"></activity>
+        <activity android:name=".Login"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

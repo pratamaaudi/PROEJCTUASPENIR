@@ -66,11 +66,20 @@ public class Main extends AppCompatActivity {
     //MOSES
     AdapterRecyclerCard adapterRecyclerCard;
 
+    //penanda login
+    public static Boolean login = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(login.equals(true)){
+            buatsnackbar("selamat datang");
+        } else {
+            buatsnackbar("login sek bos");
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -246,7 +255,7 @@ public class Main extends AppCompatActivity {
                     String imagename = c.getString("imagename");
                     String ekstensi = c.getString("ekstensi");
                     String category_categoryID = c.getString("Category_categoryID");
-                    imagesGaming.add(new image(Integer.parseInt(imageID), imagename, ekstensi, Integer.parseInt(category_categoryID)));
+                    imagesGaming.add(new image(Integer.parseInt(imageID), "imagetitle", imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
                 new OwnLibrary().toastLong(context, "Size Arraylist image gaming : " + imagesGaming.size());
             } catch (JSONException e) {
@@ -262,7 +271,7 @@ public class Main extends AppCompatActivity {
                     String imagename = c.getString("imagename");
                     String ekstensi = c.getString("ekstensi");
                     String category_categoryID = c.getString("Category_categoryID");
-                    imagesAnimal.add(new image(Integer.parseInt(imageID), imagename, ekstensi, Integer.parseInt(category_categoryID)));
+                    imagesAnimal.add(new image(Integer.parseInt(imageID), "imagetitle", imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
                 new OwnLibrary().toastLong(context, "Size Arraylist image animal : " + imagesAnimal.size());
             } catch (JSONException e) {
@@ -278,7 +287,7 @@ public class Main extends AppCompatActivity {
                     String imagename = c.getString("imagename");
                     String ekstensi = c.getString("ekstensi");
                     String category_categoryID = c.getString("Category_categoryID");
-                    imagesNSFW.add(new image(Integer.parseInt(imageID), imagename, ekstensi, Integer.parseInt(category_categoryID)));
+                    imagesNSFW.add(new image(Integer.parseInt(imageID), "imagetitle", imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
                 new OwnLibrary().toastLong(context, "Size Arraylist image nsfw : " + imagesNSFW.size());
             } catch (JSONException e) {
@@ -303,7 +312,11 @@ public class Main extends AppCompatActivity {
                 i.putExtra("ekstensi_gambar", imagesNSFW.get(position).getEkstensi());
 
                 ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, image_post, ViewCompat.getTransitionName(image_post));
-                startActivity(i, option.toBundle());
+                if(imagesNSFW.get(position).getEkstensi().equals(".gif")){
+                    startActivity(i);
+                } else {
+                    startActivity(i, option.toBundle());
+                }
             }
         });
         fragmentNSFW.mInstance(adapterRecyclerCard);
@@ -321,7 +334,13 @@ public class Main extends AppCompatActivity {
                 i.putExtra("ekstensi_gambar", imagesAnimal.get(position).getEkstensi());
 
                 ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, image_post, ViewCompat.getTransitionName(image_post));
-                startActivity(i, option.toBundle());
+                if(imagesAnimal.get(position).getEkstensi().equals(".gif")){
+                    startActivity(i);
+                } else {
+                    startActivity(i, option.toBundle());
+                }
+
+                //startActivity(i, option.toBundle());
             }
         });
         fragmentAnimal.mInstance(adapterRecyclerCard);
@@ -339,7 +358,11 @@ public class Main extends AppCompatActivity {
                 i.putExtra("ekstensi_gambar", imagesGaming.get(position).getEkstensi());
 
                 ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, image_post, ViewCompat.getTransitionName(image_post));
-                startActivity(i, option.toBundle());
+                if(imagesGaming.get(position).getEkstensi().equals(".gif")){
+                    startActivity(i);
+                } else {
+                    startActivity(i, option.toBundle());
+                }
             }
         });
         fragmentGaming.mInstance(adapterRecyclerCard);
