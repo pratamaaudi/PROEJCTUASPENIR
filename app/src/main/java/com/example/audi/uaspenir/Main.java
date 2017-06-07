@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.transition.Transition;
@@ -21,6 +22,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.transition.TransitionInflater;
 import android.util.Base64;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -61,6 +63,9 @@ public class Main extends AppCompatActivity {
 
     public DrawerLayout drawer;
 
+    public NavigationView nv;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +81,6 @@ public class Main extends AppCompatActivity {
         categoryArrayList = new ArrayList<>();
 
         imageArrayList.add(new image(1, "asd", "asd", 1));
-
 
 
         ReadData readCategory = new ReadData(this);
@@ -129,6 +133,22 @@ public class Main extends AppCompatActivity {
 
         android.transition.Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_left);
         getWindow().setExitTransition(transition);
+
+        nv = (NavigationView) findViewById(R.id.nav_view);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                drawer.closeDrawers();
+
+                switch (item.getItemId()) {
+                    case R.id.itemLogin:
+                        buatsnackbar("LOGIN BROO");
+                        break;
+                }
+
+                return false;
+            }
+        });
 
     }
 
@@ -293,7 +313,7 @@ public class Main extends AppCompatActivity {
         drawer.openDrawer(GravityCompat.START);
     }
 
-    public void lordmoses(View view){
+    public void lordmoses(View view) {
         buatsnackbar("ALL HAIL LORD MOSES !!!!");
     }
 
