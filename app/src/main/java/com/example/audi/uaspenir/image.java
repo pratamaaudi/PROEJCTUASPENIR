@@ -9,9 +9,11 @@ public class image {
     private String imagename;
     private String ekstensi;
     private int Category_categoryID;
+    private String imagetitle;
 
-    public image(int imageID, String imagename, String ekstensi, int Category_categoryID) {
+    public image(int imageID, String imagetitle, String imagename, String ekstensi, int Category_categoryID) {
         this.setImageID(imageID);
+        this.setImagetitle(imagetitle);
         this.setImagename(imagename);
         this.setEkstensi(ekstensi);
         this.setCategory_categoryID(Category_categoryID);
@@ -47,5 +49,13 @@ public class image {
 
     public void setCategory_categoryID(int Category_categoryID) {
         this.Category_categoryID = Category_categoryID;
+    }
+
+    public String getImagetitle() {
+        return imagetitle;
+    }
+
+    public void setImagetitle(String imagetitle) {
+        this.imagetitle = imagetitle;
     }
 }

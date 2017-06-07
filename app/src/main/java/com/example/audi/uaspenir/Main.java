@@ -39,7 +39,7 @@ public class Main extends AppCompatActivity {
     //untuk penanda waktu @onResume perlu nampilih dialog atau ndak (true=tampil)
     private boolean dialog;
 
-    //kode untuk foto
+    //kode untuk foto kamera
     final int CAMERA_PIC_REQUEST = 1333;
 
     //arraylist untuk hasil data json
@@ -48,6 +48,7 @@ public class Main extends AppCompatActivity {
     public static ArrayList<image> imagesGaming;
     public static ArrayList<image> imagesAnimal;
     public static ArrayList<image> imagesNSFW;
+
     public static Main instance = null;
 
     //class untuk dialogfragment
@@ -148,7 +149,7 @@ public class Main extends AppCompatActivity {
 
         });
 
-        //codingan navigationitem
+        //codingan navigationitem OPO IKU NAVIGATION ITEM?
         nv = (NavigationView) findViewById(R.id.nav_view);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -360,6 +361,7 @@ public class Main extends AppCompatActivity {
         drawer.openDrawer(GravityCompat.START);
     }
 
+    //WTF IKI
     public void lordmoses(View view) {
         //ndak perlu di jelasin
         buatsnackbar("ALL HAIL LORD MOSES !!!!");
