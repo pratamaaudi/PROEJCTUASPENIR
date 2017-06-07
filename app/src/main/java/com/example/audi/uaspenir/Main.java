@@ -189,7 +189,7 @@ public class Main extends AppCompatActivity {
                 //tampung foto tadi ke image
                 image = (Bitmap) data.getExtras().get("data");
 
-                //set dialog true biar buka dialogfragment saat @resume
+                //set dialog true biar buka dialogfragment saat @
                 dialog = true;
             }
         }
@@ -339,6 +339,8 @@ public class Main extends AppCompatActivity {
                 } else {
                     startActivity(i, option.toBundle());
                 }
+
+                //startActivity(i, option.toBundle());
             }
         });
         fragmentAnimal.mInstance(adapterRecyclerCard);

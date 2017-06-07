@@ -26,6 +26,7 @@
         <activity android:name=".detail_image"
             android:screenOrientation="portrait"/>
         <activity android:name=".dummy_comment" />
+        <activity android:name=".detail_comment" />
         <activity android:name=".SignUp" />
         <activity android:name=".Login"
             android:screenOrientation="portrait"/>

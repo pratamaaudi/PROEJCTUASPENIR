@@ -1,11 +1,12 @@
 package com.example.audi.uaspenir;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -75,6 +72,7 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
 
 
         ViewCompat.setTransitionName(holder.image_card, images.get(position).getImagename());
+        ViewCompat.setTransitionName(holder.btncomment, "btn"+images.get(position).getImagename());
     }
 
     @Override
@@ -97,8 +95,9 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
     }
 
     public void loadkomen(ArrayList<image> array, int position) {
-        Toast.makeText(context, "ambil data dengan image id : " + array.get(position).getImageID(), Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(context, detail_image.class);
+        Toast.makeText(context, "ambil komentar untuk gambar : " + array.get(position).getImagename(), Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(context, detail_comment.class);
+        i.putExtra("imageid",array.get(position).getImageID());
         context.startActivity(i);
     }
 }

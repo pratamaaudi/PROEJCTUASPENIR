@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -56,6 +58,11 @@ public class detail_image extends AppCompatActivity {
             final ImageView image = (ImageView) findViewById(R.id.image);
             image.setTransitionName(imageTransitionName);
             image.setImageBitmap(bmp);
+
+            String transitionnamebutton = "btn"+imageTransitionName;
+
+            ImageButton btncomment = (ImageButton) findViewById(R.id.imgcomment);
+            btncomment.setTransitionName(transitionnamebutton);
 
             Transition a = TransitionInflater.from(this).inflateTransition(R.transition.slide_right);
             getWindow().setEnterTransition(a);
