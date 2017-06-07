@@ -178,6 +178,7 @@ public class Main extends AppCompatActivity {
         adapterPager.addFragment(new ListContentFragment());
         adapterPager.addFragment(new TileContentFragment());
         adapterPager.addFragment(cardContentFragment);
+        adapterPager.addFragment(new StudyingFragment());
 
         vp.setAdapter(adapterPager);
     }
