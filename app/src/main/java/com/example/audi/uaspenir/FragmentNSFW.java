@@ -29,14 +29,21 @@ public class FragmentNSFW extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_nsfw, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_card_nsfw);
+        View view = null;
 
-        LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(llm);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterRecyclerCard);
-        recyclerView.setNestedScrollingEnabled(true);
+        if(Main.login){
+            view = inflater.inflate(R.layout.fragment_nsfw, container, false);
+            recyclerView = (RecyclerView) view.findViewById(R.id.recycler_card_nsfw);
+
+            LinearLayoutManager llm = new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(llm);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setAdapter(adapterRecyclerCard);
+            recyclerView.setNestedScrollingEnabled(true);
+        } else {
+            view = inflater.inflate(R.layout.nsfw_block, container, false);
+        }
+
 		return view;
     }
 }
