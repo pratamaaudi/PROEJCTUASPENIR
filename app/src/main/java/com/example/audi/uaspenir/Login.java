@@ -20,6 +20,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,53 +44,27 @@ public class Login extends AppCompatActivity {
         txtusername = (EditText) findViewById(R.id.input_username);
         txtpassword = (EditText) findViewById(R.id.input_password);
 
-        new PostTask().execute(
-                txtusername.getText().toString(),
-                txtpassword.getText().toString()
-        );
-    }
-
-    private class PostTask extends AsyncTask<String, String, String> {
-        private ProgressDialog pDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(Login.this);
-            pDialog.setMessage("Login . . ");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
+        //dikasi progress dialog biar ga di spam atau di interupt
+        ProgressDialog progressDialog = new ProgressDialog(getApplicationContext());
+        progressDialog.setMessage("Loading..");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/login.php");
+        try {
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("username", txtusername.getText().toString().trim()));
+            nameValuePairs.add(new BasicNameValuePair("password", txtpassword.getText().toString().trim()));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            HttpResponse response = httpclient.execute(httppost);
+            String json = EntityUtils.toString(response.getEntity());
+            //do something with json
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        @Override
-        protected String doInBackground(String... data) {
-            // Create a new HttpClient and Post Header
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/login.php");
-
-            try {
-                //add data
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-                nameValuePairs.add(new BasicNameValuePair("username", data[0]));
-                nameValuePairs.add(new BasicNameValuePair("password", data[1]));
-                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                //execute http post
-                HttpResponse response = httpclient.execute(httppost);
-
-            } catch (ClientProtocolException e) {
-
-            } catch (IOException e) {
-
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            pDialog.dismiss();
-        }
+        progressDialog.dismiss();
     }
 
     public void daftar(View view){
