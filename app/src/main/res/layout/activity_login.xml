@@ -16,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:transitionName="imglogo"/>
 
         <!-- Email Label -->
         <android.support.design.widget.TextInputLayout
@@ -61,7 +62,8 @@
             android:layout_marginBottom="24dp"
             android:text="No account yet? Create one"
             android:gravity="center"
-            android:textSize="16dip"/>
+            android:textSize="16dip"
+            android:transitionName="txtjudul"/>
 
     </LinearLayout>
 </ScrollView>

@@ -143,6 +143,12 @@ public class Main extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.itemLogin:
                         buatsnackbar("LOGIN BROO");
+
+                        Intent i = new Intent(Main.this, Login.class);
+                        Pair<View, String> p1 = Pair.create(findViewById(R.id.imglogo), "imglogo");
+                        Pair<View, String> p2 = Pair.create(findViewById(R.id.txtjudul), "txtjudul");
+                        ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, p1, p2);
+                        startActivity(i, option.toBundle());
                         break;
                 }
 
