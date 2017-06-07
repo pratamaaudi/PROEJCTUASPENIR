@@ -1,7 +1,5 @@
 package com.example.audi.uaspenir;
 
-
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,41 +8,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CardContentFragment extends Fragment {
+public class FragmentGaming extends Fragment {
 
-
-    public CardContentFragment() {
+    public FragmentGaming() {
         // Required empty public constructor
     }
 
     RecyclerView recyclerView;
     AdapterRecyclerCard adapterRecyclerCard;
 
-    public CardContentFragment mInstance(AdapterRecyclerCard adapterRecyclerCard){
-        CardContentFragment cardContentFragment = new CardContentFragment();
+    public FragmentGaming mInstance(AdapterRecyclerCard adapterRecyclerCard){
+        FragmentGaming fragmentGaming = new FragmentGaming();
         this.adapterRecyclerCard = adapterRecyclerCard;
-        return cardContentFragment;
+        return fragmentGaming;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_card_content, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_card);
+        View view = inflater.inflate(R.layout.fragment_gaming, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_card_gaming);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(llm);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapterRecyclerCard);
         recyclerView.setNestedScrollingEnabled(true);
-		return view;
-
+        return view;
     }
-
 }
