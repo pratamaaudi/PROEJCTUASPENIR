@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.audi.uaspenir.CardContentFragment">
+    tools:context="com.example.audi.uaspenir.FragmentNSFW">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_card"
+        android:id="@+id/recycler_card_gaming"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
