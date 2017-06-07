@@ -21,6 +21,8 @@ import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import org.json.JSONArray;
@@ -75,7 +77,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(login.equals(true)){
+        if (login.equals(true)) {
             buatsnackbar("selamat datang");
         } else {
             buatsnackbar("login sek bos");
@@ -302,7 +304,7 @@ public class Main extends AppCompatActivity {
         FragmentNSFW fragmentNSFW = new FragmentNSFW();
         adapterRecyclerCard = new AdapterRecyclerCard(getApplicationContext(), imagesNSFW, new OnRecyclerItemClickListener() {
             @Override
-            public void onItemClick(View v, int position, ImageView image_post) {
+            public void onItemClick(View v, int position, ImageView image_post, Button btncomment) {
                 //do something here with the position
                 new OwnLibrary().toastShort(getApplicationContext(), "Position : " + position);
 
@@ -311,8 +313,12 @@ public class Main extends AppCompatActivity {
                 i.putExtra("nama_gambar", imagesNSFW.get(position).getImagename());
                 i.putExtra("ekstensi_gambar", imagesNSFW.get(position).getEkstensi());
 
-                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, image_post, ViewCompat.getTransitionName(image_post));
-                if(imagesNSFW.get(position).getEkstensi().equals(".gif")){
+
+                Pair<View, String> p1 = Pair.create((View) image_post, ViewCompat.getTransitionName(image_post));
+                Pair<View, String> p2 = Pair.create((View) btncomment, "btn" + ViewCompat.getTransitionName(image_post));
+                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, p1, p2);
+
+                if (imagesNSFW.get(position).getEkstensi().equals(".gif")) {
                     startActivity(i);
                 } else {
                     startActivity(i, option.toBundle());
@@ -324,7 +330,7 @@ public class Main extends AppCompatActivity {
         FragmentAnimal fragmentAnimal = new FragmentAnimal();
         adapterRecyclerCard = new AdapterRecyclerCard(getApplicationContext(), imagesAnimal, new OnRecyclerItemClickListener() {
             @Override
-            public void onItemClick(View v, int position, ImageView image_post) {
+            public void onItemClick(View v, int position, ImageView image_post, Button btncomment) {
                 //do something here with the position
                 new OwnLibrary().toastShort(getApplicationContext(), "Position : " + position);
 
@@ -333,8 +339,11 @@ public class Main extends AppCompatActivity {
                 i.putExtra("nama_gambar", imagesAnimal.get(position).getImagename());
                 i.putExtra("ekstensi_gambar", imagesAnimal.get(position).getEkstensi());
 
-                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, image_post, ViewCompat.getTransitionName(image_post));
-                if(imagesAnimal.get(position).getEkstensi().equals(".gif")){
+                Pair<View, String> p1 = Pair.create((View) image_post, ViewCompat.getTransitionName(image_post));
+                Pair<View, String> p2 = Pair.create((View) btncomment, "btn" + ViewCompat.getTransitionName(image_post));
+                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, p1, p2);
+
+                if (imagesAnimal.get(position).getEkstensi().equals(".gif")) {
                     startActivity(i);
                 } else {
                     startActivity(i, option.toBundle());
@@ -348,7 +357,7 @@ public class Main extends AppCompatActivity {
         FragmentGaming fragmentGaming = new FragmentGaming();
         adapterRecyclerCard = new AdapterRecyclerCard(getApplicationContext(), imagesGaming, new OnRecyclerItemClickListener() {
             @Override
-            public void onItemClick(View v, int position, ImageView image_post) {
+            public void onItemClick(View v, int position, ImageView image_post, Button btncomment) {
                 //do something here with the position
                 new OwnLibrary().toastShort(getApplicationContext(), "Position : " + position);
 
@@ -357,8 +366,11 @@ public class Main extends AppCompatActivity {
                 i.putExtra("nama_gambar", imagesGaming.get(position).getImagename());
                 i.putExtra("ekstensi_gambar", imagesGaming.get(position).getEkstensi());
 
-                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, image_post, ViewCompat.getTransitionName(image_post));
-                if(imagesGaming.get(position).getEkstensi().equals(".gif")){
+                Pair<View, String> p1 = Pair.create((View) image_post, ViewCompat.getTransitionName(image_post));
+                Pair<View, String> p2 = Pair.create((View) btncomment, "btn" + ViewCompat.getTransitionName(image_post));
+                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, p1, p2);
+
+                if (imagesGaming.get(position).getEkstensi().equals(".gif")) {
                     startActivity(i);
                 } else {
                     startActivity(i, option.toBundle());

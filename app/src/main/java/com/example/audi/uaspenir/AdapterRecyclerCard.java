@@ -41,7 +41,7 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onRecyclerItemClickListener.onItemClick(v, mViewHolder.getPosition(), mViewHolder.image_card);
+                onRecyclerItemClickListener.onItemClick(v, mViewHolder.getPosition(), mViewHolder.image_card, mViewHolder.btncomment);
             }
         });
 

@@ -1,6 +1,7 @@
 package com.example.audi.uaspenir;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 /**
@@ -8,5 +9,5 @@ import android.widget.ImageView;
  */
 
 public interface OnRecyclerItemClickListener {
-    void onItemClick(View v, int position, ImageView image_post);
+    void onItemClick(View v, int position, ImageView image_post, Button btncomment);
 }
