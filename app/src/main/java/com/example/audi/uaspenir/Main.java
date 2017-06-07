@@ -45,25 +45,35 @@ import java.util.List;
 
 public class Main extends AppCompatActivity {
 
-    //viewpage
+    //viewpage untuk fragment dan tab
     public ViewPager vp;
     public TabLayout tabs;
 
+    //untuk penanda waktu @onResume perlu nampilih dialog atau ndak (true=tampil)
     private boolean dialog;
 
+    //kode untuk foto
     final int CAMERA_PIC_REQUEST = 1333;
 
+    //arraylist untuk hasil data jsin
     public static ArrayList<category> categoryArrayList;
     public static ArrayList<image> imageArrayList;
     public static Main instance = null;
 
+    //class untuk dialogfragment
     public post post;
 
+    //nampung data gambarnya, karena setelah di foto ga langsung dipake, tapi dipake di @onResume
     public Bitmap image;
 
+    //untuk menu slet kanan, biar bisa di coding bukatutup
     public DrawerLayout drawer;
 
+    //untuk coding waku ada menu yang di pilih, termasuk ambil item apa yang di klik
     public NavigationView nv;
+
+    //MOSES
+    AdapterRecyclerCard adapterRecyclerCard;
 
 
     @Override
@@ -71,36 +81,45 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //ANIMASI - load slide_left untuk exit transition
+        android.transition.Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_left);
+        getWindow().setExitTransition(transition);
+
+        //ERWIN
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        //ben konek nang UI
         drawer = (DrawerLayout) findViewById(R.id.drawer);
+        vp = (ViewPager) findViewById(R.id.viewpager);
+        tabs = (TabLayout) findViewById(R.id.tabs);
 
+        //ERWIN
         instance = this;
         imageArrayList = new ArrayList<>();
         categoryArrayList = new ArrayList<>();
 
+        //ERWIN
         imageArrayList.add(new image(1, "asd", "asd", 1));
 
-
+        //load class + baca data category
         ReadData readCategory = new ReadData(this);
         readCategory.execute(OwnLibrary.url_category, "category");
 
+        //load class + baca data category
         ReadData readImage = new ReadData(this);
         readImage.execute(OwnLibrary.url_image, "image");
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        int height = this.getResources().getDisplayMetrics().heightPixels;
-
-        //viewpage
-        vp = (ViewPager) findViewById(R.id.viewpager);
-
-        tabs = (TabLayout) findViewById(R.id.tabs);
+        //codingan TAB
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                //coding waktu Tab di pilih
+
+                //pindah viewpager sesuai dengan position tab
                 vp.setCurrentItem(tab.getPosition());
             }
 
@@ -113,7 +132,7 @@ public class Main extends AppCompatActivity {
             }
         });
 
-
+        //codingan Viewpager
         vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -131,23 +150,29 @@ public class Main extends AppCompatActivity {
 
         });
 
-        android.transition.Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide_left);
-        getWindow().setExitTransition(transition);
-
-        nv = (NavigationView) findViewById(R.id.nav_view);
+        //codingan navigationitem
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
+                //coding waktu ada item di pilih
+
+                //tutup menu slet kanan
                 drawer.closeDrawers();
 
+                //cek menu apa yang dipilih
                 switch (item.getItemId()) {
                     case R.id.itemLogin:
-                        buatsnackbar("LOGIN BROO");
+                        //kalau menu login
 
+                        //pindah ke activity login
                         Intent i = new Intent(Main.this, Login.class);
+
+                        //ANIMASI - item apa saja yang mau di animasikan
                         Pair<View, String> p1 = Pair.create(findViewById(R.id.imglogo), "imglogo");
                         Pair<View, String> p2 = Pair.create(findViewById(R.id.txtjudul), "txtjudul");
                         ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, p1, p2);
+
+                        //pindah activity
                         startActivity(i, option.toBundle());
                         break;
                 }
@@ -158,6 +183,56 @@ public class Main extends AppCompatActivity {
 
     }
 
+    //codingan setelah selesai intent explicit (moto)
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_PIC_REQUEST) {
+            //codinga kalau abis moto
+
+            if (data != null) {
+                //coding kalau ada datanya
+
+                //tampung foto tadi ke image
+                image = (Bitmap) data.getExtras().get("data");
+
+                //set dialog true biar buka dialogfragment
+                dialog = true;
+            }
+        }
+    }
+
+    //codingan yang jalan setelah oncreate atau onactivityresult
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //codingan yang jalan setelah oncreate atau onactivityresult
+
+        //cek perlu buat dialog atau ndak
+        if (dialog) {
+            //codingan kalau dialog = true
+
+            //bundle untuk kirim data
+            Bundle b = new Bundle();
+
+            //convert bitmap jadi array
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byte[] imgBytes = byteArrayOutputStream.toByteArray();
+
+            //masukkan array ke bundle
+            b.putByteArray("image", imgBytes);
+
+            //load fragmentdialog
+            FragmentManager fm = getSupportFragmentManager();
+            post = new post();
+            post.setArguments(b);
+            post.show(fm, "post new meme");
+
+            //set dialog = false, biar nanti ga muncul lagi
+            dialog = false;
+        }
+    }
+
+    //ERWIN
     public static void readDataFinish(Context context, String result, String type) {
         if (type.equalsIgnoreCase("category")) {
             try {
@@ -196,26 +271,7 @@ public class Main extends AppCompatActivity {
         instance.setupViewPager();
     }
 
-    @Override
-    public void onBackPressed() {
-        finishAffinity();
-    }
-
-    public void ambilfoto(View view) {
-        //buatsnackbar(view);
-
-        //Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        //startActivity(intent);
-
-        //Intent Intent3=new   Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
-        //startActivity(Intent3);
-
-        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
-    }
-
-    AdapterRecyclerCard adapterRecyclerCard;
-
+    //ERWIN / MOSES
     private void setupViewPager() {
         CardContentFragment cardContentFragment = new CardContentFragment();
         adapterRecyclerCard = new AdapterRecyclerCard(getApplicationContext(), imageArrayList, new OnRecyclerItemClickListener() {
@@ -243,106 +299,36 @@ public class Main extends AppCompatActivity {
         vp.setAdapter(adapterPager);
     }
 
-    public void buatsnackbar(String text) {
-        Snackbar.make(getWindow().getDecorView().getRootView(), text, Snackbar.LENGTH_LONG).setAction("Action", null).show();
-    }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_PIC_REQUEST) {
-            if (data != null) {
-                image = (Bitmap) data.getExtras().get("data");
-                //ImageView imageview = (ImageView) findViewById(R.id.imglogo);
-                //imageview.setImageBitmap(image);
-
-                //new PostTask().execute(imageToString(image), "test");
-                //buatsnackbar("Uploading image . . .");
-
-                dialog = true;
-            }
-        }
-    }
-
-    private String imageToString(Bitmap bitmap) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        byte[] imgBytes = byteArrayOutputStream.toByteArray();
-        return Base64.encodeToString(imgBytes, Base64.DEFAULT);
-    }
-
-    private class PostTask extends AsyncTask<String, String, String> {
-        private ProgressDialog pDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(Main.this);
-            pDialog.setMessage("Uploading Photo. Please wait...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... data) {
-            // Create a new HttpClient and Post Header
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/upload.php");
-
-            try {
-                //add data
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-                nameValuePairs.add(new BasicNameValuePair("image", data[0]));
-                nameValuePairs.add(new BasicNameValuePair("name", data[1]));
-                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                //execute http post
-                HttpResponse response = httpclient.execute(httppost);
-
-            } catch (ClientProtocolException e) {
-
-            } catch (IOException e) {
-
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            pDialog.dismiss();
-        }
-    }
-
+    //CODINGAN ONCLICK DARI UI
     public void pindahhalaman(View view) {
-        //Intent i = new Intent(this, gif.class);
-        //startActivity(i);
+        //codingan waktu icon di tekan
 
+        //buka menu slet kanan
         drawer.openDrawer(GravityCompat.START);
     }
 
     public void lordmoses(View view) {
+        //ndak perlu di jelasin
         buatsnackbar("ALL HAIL LORD MOSES !!!!");
     }
 
+    public void ambilfoto(View view) {
+        //codingan waktu FAB foto di pilih
+
+        //buka kamera
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
+    }
+
+    //CODINGAN DLL
+    //biar ga balik ke splash
     @Override
-    protected void onResume() {
-        super.onResume();
+    public void onBackPressed() {
+        finishAffinity();
+    }
 
-        if (dialog) {
-            Bundle b = new Bundle();
-
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-            byte[] imgBytes = byteArrayOutputStream.toByteArray();
-
-            b.putByteArray("image", imgBytes);
-
-            FragmentManager fm = getSupportFragmentManager();
-            post = new post();
-            post.setArguments(b);
-
-            post.show(fm, "post new meme");
-
-            dialog = false;
-        }
+    public void buatsnackbar(String text) {
+        Snackbar.make(getWindow().getDecorView().getRootView(), text, Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 }

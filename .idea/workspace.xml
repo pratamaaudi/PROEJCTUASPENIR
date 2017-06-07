@@ -15,11 +15,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/post.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/post.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Main.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Main.java" />
     </list>
     <ignored path="PROEJCTUASPENIR.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -146,10 +145,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="post.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="post.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/post.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
+            <state relative-caret-position="612">
               <caret line="68" column="49" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
               <folding>
                 <element signature="e#4094#4109#0" expanded="true" />
@@ -158,27 +157,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_splash.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="61" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="61" />
-              <folding />
+            <state relative-caret-position="306">
+              <caret line="202" column="64" selection-start-line="202" selection-start-column="64" selection-end-line="202" selection-end-column="64" />
+              <folding>
+                <element signature="method#onCreate#0;class#Main#0" expanded="false" />
+                <element signature="class#3995:4492" expanded="false" />
+                <element signature="class#4564:5030" expanded="false" />
+                <element signature="e#5276#5308#0" expanded="false" />
+                <element signature="e#5543#5561#0" expanded="false" />
+                <element signature="method#onActivityResult#0;class#Main#0" expanded="false" />
+                <element signature="method#onResume#0;class#Main#0" expanded="false" />
+                <element signature="method#readDataFinish#0;class#Main#0" expanded="false" />
+                <element signature="method#setupViewPager#0;class#Main#0" expanded="false" />
+                <element signature="e#10085#10955#0" expanded="true" />
+                <element signature="e#10954#10955#0" expanded="true" />
+                <element signature="method#pindahhalaman#0;class#Main#0" expanded="false" />
+                <element signature="method#lordmoses#0;class#Main#0" expanded="false" />
+                <element signature="method#ambilfoto#0;class#Main#0" expanded="false" />
+                <element signature="method#buatsnackbar#0;class#Main#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail_post.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/detail_post.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="NavigationView.java" pinned="false" current-in-tab="false">
+        <entry file="jar://E:/SDK/extras/android/m2repository/com/android/support/design/25.3.1/design-25.3.1-sources.jar!/android/support/design/widget/NavigationView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="190">
+              <caret line="452" column="23" selection-start-line="452" selection-start-column="23" selection-end-line="452" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -2084,7 +2093,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Splash.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/navigation_drawer_header.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/navi_drawer_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Main.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/transition/slide_up.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Login.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/SignUp.java" />
@@ -2093,6 +2101,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/post.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Main.java" />
       </list>
     </option>
   </component>
@@ -2617,7 +2626,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="26" width="1374" height="746" extended-state="7" />
+    <frame x="-4" y="26" width="1374" height="746" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2663,18 +2672,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/pl.droidsonroids.gif/android-gif-drawable/1.2.7/3b891686856d06e791bd6556e54ab8ec762ff5c1/android-gif-drawable-1.2.7-sources.jar!/pl/droidsonroids/gif/GifDrawable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="206" column="11" selection-start-line="206" selection-start-column="11" selection-end-line="206" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -2945,24 +2947,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="150" column="60" selection-start-line="146" selection-start-column="24" selection-end-line="150" selection-end-column="60" />
-          <folding>
-            <element signature="method#readDataFinish#0;class#Main#0" expanded="false" />
-            <element signature="method#ambilfoto#0;class#Main#0" expanded="false" />
-            <element signature="method#setupViewPager#0;class#Main#0" expanded="false" />
-            <element signature="method#buatsnackbar#0;class#Main#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#Main#0" expanded="false" />
-            <element signature="method#imageToString#0;class#Main#0" expanded="false" />
-            <element signature="class#PostTask#0;class#Main#0" expanded="false" />
-            <element signature="method#pindahhalaman#0;class#Main#0" expanded="false" />
-            <element signature="method#onResume#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/transition/slide_bottom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -3118,10 +3102,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/post.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
+        <state relative-caret-position="612">
           <caret line="68" column="49" selection-start-line="68" selection-start-column="49" selection-end-line="68" selection-end-column="49" />
           <folding>
             <element signature="e#4094#4109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/SDK/extras/android/m2repository/com/android/support/design/25.3.1/design-25.3.1-sources.jar!/android/support/design/widget/NavigationView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="452" column="23" selection-start-line="452" selection-start-column="23" selection-end-line="452" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="202" column="64" selection-start-line="202" selection-start-column="64" selection-end-line="202" selection-end-column="64" />
+          <folding>
+            <element signature="method#onCreate#0;class#Main#0" expanded="false" />
+            <element signature="class#3995:4492" expanded="false" />
+            <element signature="class#4564:5030" expanded="false" />
+            <element signature="e#5276#5308#0" expanded="false" />
+            <element signature="e#5543#5561#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#Main#0" expanded="false" />
+            <element signature="method#onResume#0;class#Main#0" expanded="false" />
+            <element signature="method#readDataFinish#0;class#Main#0" expanded="false" />
+            <element signature="method#setupViewPager#0;class#Main#0" expanded="false" />
+            <element signature="e#10085#10955#0" expanded="true" />
+            <element signature="e#10954#10955#0" expanded="true" />
+            <element signature="method#pindahhalaman#0;class#Main#0" expanded="false" />
+            <element signature="method#lordmoses#0;class#Main#0" expanded="false" />
+            <element signature="method#ambilfoto#0;class#Main#0" expanded="false" />
+            <element signature="method#buatsnackbar#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
