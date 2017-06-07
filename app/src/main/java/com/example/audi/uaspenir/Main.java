@@ -55,7 +55,7 @@ public class Main extends AppCompatActivity {
     //kode untuk foto
     final int CAMERA_PIC_REQUEST = 1333;
 
-    //arraylist untuk hasil data jsin
+    //arraylist untuk hasil data json
     public static ArrayList<category> categoryArrayList;
     public static ArrayList<image> imageArrayList;
     public static Main instance = null;
@@ -151,36 +151,23 @@ public class Main extends AppCompatActivity {
         });
 
         //codingan navigationitem
+        nv = (NavigationView) findViewById(R.id.nav_view);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                //coding waktu ada item di pilih
-
-                //tutup menu slet kanan
                 drawer.closeDrawers();
-
-                //cek menu apa yang dipilih
                 switch (item.getItemId()) {
                     case R.id.itemLogin:
-                        //kalau menu login
-
-                        //pindah ke activity login
                         Intent i = new Intent(Main.this, Login.class);
-
-                        //ANIMASI - item apa saja yang mau di animasikan
                         Pair<View, String> p1 = Pair.create(findViewById(R.id.imglogo), "imglogo");
                         Pair<View, String> p2 = Pair.create(findViewById(R.id.txtjudul), "txtjudul");
                         ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, p1, p2);
-
-                        //pindah activity
                         startActivity(i, option.toBundle());
                         break;
                 }
-
                 return false;
             }
         });
-
     }
 
     //codingan setelah selesai intent explicit (moto)
