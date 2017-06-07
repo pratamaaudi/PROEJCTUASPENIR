@@ -61,7 +61,7 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
             holder.imgplay.setVisibility(View.INVISIBLE);
             holder.image_card.setImageAlpha(255);
         }
-        holder.title.setText(images.get(position).getImagename());
+        holder.title.setText(images.get(position).getImagetitle());
 
         Picasso.with(context).load("http://103.52.146.34/penir/penir13/IMAGE/" + images.get(position).getImagename() + images.get(position).getEkstensi()).into(holder.image_card);
 
