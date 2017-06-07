@@ -14,11 +14,11 @@
 
         <ImageView
             android:id="@+id/imglogo"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/ic_account_circle_black_24dp"
             android:transitionName="imglogo" />
 
         <!-- Email Label -->
