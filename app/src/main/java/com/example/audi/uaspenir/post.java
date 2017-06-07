@@ -55,7 +55,7 @@ public class post extends DialogFragment {
         c = this.getActivity().getWindow().getContext();
 
         Button btnpost = (Button) rootView.findViewById(R.id.btnkirim);
-        EditText txtjudul = (EditText) rootView.findViewById(R.id.txtjudul);
+        final EditText txtjudul = (EditText) rootView.findViewById(R.id.txtjudul);
         ImageView imgfoto = (ImageView) rootView.findViewById(R.id.imgfoto);
 
         byte[] bytes = getArguments().getByteArray("image");
@@ -66,7 +66,7 @@ public class post extends DialogFragment {
         btnpost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new PostTask().execute(imageToString(bmp), "test");
+                new PostTask().execute(imageToString(bmp), txtjudul.getText().toString(),".jpg","1");
             }
         });
 
@@ -120,6 +120,8 @@ public class post extends DialogFragment {
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("image", data[0]));
                 nameValuePairs.add(new BasicNameValuePair("name", data[1]));
+                nameValuePairs.add(new BasicNameValuePair("ext", data[2]));
+                nameValuePairs.add(new BasicNameValuePair("cat", data[3]));
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 //execute http post
                 HttpResponse response = httpclient.execute(httppost);
