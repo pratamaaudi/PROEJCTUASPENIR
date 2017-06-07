@@ -64,7 +64,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@android:color/holo_blue_bright"
-            app:tabMode="scrollable"
             app:tabSelectedTextColor="@color/colorAccent">
 
             <android.support.design.widget.TabItem
