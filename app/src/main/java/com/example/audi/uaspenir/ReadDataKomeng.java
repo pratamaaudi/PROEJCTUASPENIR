@@ -93,7 +93,7 @@ public class ReadDataKomeng extends AsyncTask<String, String, String> {
             progressDialog.dismiss();
         }
 
-        detail_comment.readDataFinish(detail_comment.getApplicationContext(), result, type);
+        //detail_comment.readDataFinish(detail_comment.getApplicationContext(), result, type);
        // return result;
     }
 }

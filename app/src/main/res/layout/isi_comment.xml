@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:padding="20dp"
+    android:background="@color/colorAccent">
 
     <TextView
         android:id="@+id/txtNama"
@@ -10,12 +13,15 @@
         android:layout_height="wrap_content"
         android:text="NAMA"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/txtComment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="COMMENT"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/white"/>
 </LinearLayout>

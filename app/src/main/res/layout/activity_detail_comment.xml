@@ -6,14 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.audi.uaspenir.detail_comment"
-    android:weightSum="1">
-
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="JUDUL POST"
-        android:textSize="24sp" />
+    android:weightSum="1"
+    android:background="@color/colorPrimary">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_comment"
@@ -21,19 +15,34 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.98" />
 
-    <EditText
-        android:id="@+id/pltComment"
+    <LinearLayout
+        android:id="@+id/llinsertcomment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Write a comment . . ."
-        android:inputType="textPersonName" />
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp">
 
-    <Button
-        android:id="@+id/btnPost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="POST"
-        android:layout_marginBottom="25dp"/>
+        <EditText
+            android:id="@+id/pltComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Write a comment . . ."
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="15dp"
+            android:text="POST" />
+    </LinearLayout>
+
 </LinearLayout>
