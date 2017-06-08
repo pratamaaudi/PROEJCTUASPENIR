@@ -12,7 +12,7 @@
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TITLE"
+        android:text="JUDUL POST"
         android:textSize="24sp" />
 
     <android.support.v7.widget.RecyclerView
