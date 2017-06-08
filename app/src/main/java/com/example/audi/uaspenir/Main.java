@@ -389,10 +389,15 @@ public class Main extends AppCompatActivity {
         });
         fragmentGaming.mInstance(adapterRecyclerCard);
 
+        FragmentStudying fragmentStudying=new FragmentStudying();
+        FragmentDIY fragmentDIY=new FragmentDIY();
+
         AdapterPager adapterPager = new AdapterPager(getSupportFragmentManager());
         adapterPager.addFragment(fragmentAnimal);
         adapterPager.addFragment(fragmentGaming);
         adapterPager.addFragment(fragmentNSFW);
+        adapterPager.addFragment(fragmentStudying);
+        adapterPager.addFragment(fragmentDIY);
 
         vp.setAdapter(adapterPager);
     }
