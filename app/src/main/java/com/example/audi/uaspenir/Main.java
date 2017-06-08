@@ -70,6 +70,7 @@ public class Main extends AppCompatActivity {
 
     //penanda login
     public static Boolean login = false;
+    public static String nama = "";
 
 
     @Override
@@ -78,9 +79,9 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (login.equals(true)) {
-            buatsnackbar("selamat datang");
+            buatsnackbar("selamat datang, " +nama);
         } else {
-            buatsnackbar("login sek bos");
+
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

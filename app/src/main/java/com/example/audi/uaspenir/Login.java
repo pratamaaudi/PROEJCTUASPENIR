@@ -21,6 +21,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,13 +60,21 @@ public class Login extends AppCompatActivity {
             nameValuePairs.add(new BasicNameValuePair("password", txtpassword.getText().toString().trim()));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             HttpResponse response = httpclient.execute(httppost);
-            String json = EntityUtils.toString(response.getEntity());
+            String respon = EntityUtils.toString(response.getEntity());
             //do something with json
 
-            String nama = "nama";
 
-            if(json.equals("true")){
+
+            JSONObject jo = new JSONObject(respon);
+            Boolean hasil = jo.getBoolean("result");
+            Integer userid = jo.getInt("userid");
+            String nama = jo.getString("fullname");
+
+            buatsnackbar(String.valueOf(userid));
+
+            if(hasil){
                 Main.login = true;
+                Main.nama = nama;
                 Intent i = new Intent(Login.this, Main.class);
                 Pair<View, String> p1 = Pair.create(findViewById(R.id.imglogo), "imglogo");
                 ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Login.this, p1);
@@ -75,6 +86,8 @@ public class Login extends AppCompatActivity {
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         progressDialog.dismiss();
