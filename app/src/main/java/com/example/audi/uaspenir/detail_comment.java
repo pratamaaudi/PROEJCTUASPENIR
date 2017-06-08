@@ -61,6 +61,36 @@ public class detail_comment extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         imageid = extras.getInt("imageid");
 
+        ProgressDialog progressDialog = new ProgressDialog(detail_comment.this);
+        progressDialog.setMessage("Loading..");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/comment.php");
+        try {
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            Toast.makeText(getApplicationContext(), pltcomment.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), String.valueOf(Main.userid).trim(), Toast.LENGTH_SHORT).show();
+            nameValuePairs.add(new BasicNameValuePair("imageid", String.valueOf(imageid)));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            HttpResponse response = httpclient.execute(httppost);
+            String respon = EntityUtils.toString(response.getEntity());
+            buatsnackbar(respon);
+            JSONObject json = new JSONObject(respon);
+            JSONArray json2 = json.getJSONArray("post");
+            for (int i = 0; i < json2.length(); i++) {
+                JSONObject c = json2.getJSONObject(i);
+                int commentID = c.getInt("commentID");
+                String isicomment = c.getString("isicomment");
+                String fullname = c.getString("fullname");
+                komeng.add(new comment(commentID, isicomment, fullname));
+            }
+        } catch (Exception e) {
+
+        }
+        setupRecyclerView();
+        progressDialog.dismiss();
+
         if (Main.login) {
             btnpost.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,8 +125,8 @@ public class detail_comment extends AppCompatActivity {
             btnpost.setVisibility(View.GONE);
         }
 
-        ReadDataKomeng readDataKomeng = new ReadDataKomeng(detail_comment.this);
-        readDataKomeng.execute(OwnLibrary.url_komeng, "komeng");
+        //ReadDataKomeng readDataKomeng = new ReadDataKomeng(detail_comment.this);
+        //readDataKomeng.execute(OwnLibrary.url_komeng, "komeng");
     }
 
     public static void readDataFinish(Context context, String result, String type) {
