@@ -21,6 +21,8 @@ import java.net.URL;
 
 public class detail_image extends AppCompatActivity {
 
+    Integer imageid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class detail_image extends AppCompatActivity {
         String imageTransitionName = extras.getString("transition_name");
         final String nama_gambar = extras.getString("nama_gambar");
         final String ekstensi_gambar = extras.getString("ekstensi_gambar");
+        imageid = extras.getInt("imageid");
 
         if(ekstensi_gambar.equals(".gif")){
             ImageView image = (ImageView) findViewById(R.id.image);
@@ -72,6 +75,7 @@ public class detail_image extends AppCompatActivity {
 
     public void comment(View view){
         Intent i = new Intent(this, dummy_comment.class);
+        i.putExtra("imageid", imageid);
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
         startActivity(i, options.toBundle());
     }
