@@ -73,7 +73,7 @@ public class Main extends AppCompatActivity {
 
     String nama = "";
 
-    Integer userid;
+    public static Integer userid;
 
 
     @Override
@@ -118,29 +118,7 @@ public class Main extends AppCompatActivity {
         imagesDIY = new ArrayList<>();
         imagesStudying = new ArrayList<>();
 
-        //load class + baca data category
-        ReadDataMain readCategory = new ReadDataMain(this);
-        readCategory.execute(OwnLibrary.url_category, "category");
-
-        //load class + baca data category
-        ReadDataMain readImageGaming = new ReadDataMain(this);
-        readImageGaming.execute(OwnLibrary.url_gaming, "gaming");
-
-        //load class + baca data category
-        ReadDataMain readImageAnimal = new ReadDataMain(this);
-        readImageAnimal.execute(OwnLibrary.url_animal, "animal");
-
-        //load class + baca data category
-        ReadDataMain readImageNSFW = new ReadDataMain(this);
-        readImageNSFW.execute(OwnLibrary.url_nsfw, "nsfw");
-
-        //load class + baca data category
-        ReadDataMain readImageStudying = new ReadDataMain(this);
-        readImageStudying.execute(OwnLibrary.url_studying, "studying");
-
-        //load class + baca data category
-        ReadDataMain readImageDIY = new ReadDataMain(this);
-        readImageDIY.execute(OwnLibrary.url_diy, "diy");
+        refreshcontent();
 
 
         //codingan TAB
@@ -194,6 +172,9 @@ public class Main extends AppCompatActivity {
                         ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, p1, p2);
                         startActivity(i, option.toBundle());
                         break;
+
+                    case R.id.itemRefresh:
+                        refreshcontent();
                 }
                 return false;
             }
@@ -247,6 +228,32 @@ public class Main extends AppCompatActivity {
             //set dialog = false, biar nanti ga muncul lagi
             dialog = false;
         }
+    }
+
+    public void refreshcontent(){
+        //load class + baca data category
+        ReadDataMain readCategory = new ReadDataMain(this);
+        readCategory.execute(OwnLibrary.url_category, "category");
+
+        //load class + baca data category
+        ReadDataMain readImageGaming = new ReadDataMain(this);
+        readImageGaming.execute(OwnLibrary.url_gaming, "gaming");
+
+        //load class + baca data category
+        ReadDataMain readImageAnimal = new ReadDataMain(this);
+        readImageAnimal.execute(OwnLibrary.url_animal, "animal");
+
+        //load class + baca data category
+        ReadDataMain readImageNSFW = new ReadDataMain(this);
+        readImageNSFW.execute(OwnLibrary.url_nsfw, "nsfw");
+
+        //load class + baca data category
+        ReadDataMain readImageStudying = new ReadDataMain(this);
+        readImageStudying.execute(OwnLibrary.url_studying, "studying");
+
+        //load class + baca data category
+        ReadDataMain readImageDIY = new ReadDataMain(this);
+        readImageDIY.execute(OwnLibrary.url_diy, "diy");
     }
 
     //ERWIN

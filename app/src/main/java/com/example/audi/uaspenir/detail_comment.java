@@ -1,5 +1,6 @@
 package com.example.audi.uaspenir;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +13,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class detail_comment extends AppCompatActivity {
 
@@ -24,6 +33,8 @@ public class detail_comment extends AppCompatActivity {
     AdapterRecyclerKomeng adapterRecyclerKomeng;
     public static ArrayList<comment> komeng;
     public static detail_comment instance = null;
+    Integer imageid;
+    EditText pltcomment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +53,7 @@ public class detail_comment extends AppCompatActivity {
 
         if (Main.login) {
         } else {
-            EditText pltcomment = (EditText) findViewById(R.id.pltComment);
+            pltcomment = (EditText) findViewById(R.id.pltComment);
             Button btnpost = (Button) findViewById(R.id.btnPost);
             pltcomment.setVisibility(View.GONE);
             btnpost.setVisibility(View.GONE);
@@ -50,6 +61,9 @@ public class detail_comment extends AppCompatActivity {
 
         ReadDataKomeng readDataKomeng = new ReadDataKomeng(detail_comment.this);
         readDataKomeng.execute(OwnLibrary.url_komeng, "komeng");
+
+        Bundle extras = getIntent().getExtras();
+        imageid = extras.getInt("imageid");
     }
 
     public static void readDataFinish(Context context, String result, String type) {
@@ -78,5 +92,25 @@ public class detail_comment extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapterRecyclerKomeng);
         recyclerView.setNestedScrollingEnabled(true);
+    }
+
+    public void postcomment(View view) {
+        ProgressDialog progressDialog = new ProgressDialog(detail_comment.this);
+        progressDialog.setMessage("Loading..");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/login.php");
+        try {
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("komentar", pltcomment.getText().toString().trim()));
+            nameValuePairs.add(new BasicNameValuePair("userID", String.valueOf(Main.userid).trim()));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            HttpResponse response = httpclient.execute(httppost);
+        } catch (Exception e){
+
+        }
+        progressDialog.dismiss();
+
     }
 }
