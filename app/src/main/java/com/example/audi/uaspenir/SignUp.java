@@ -1,6 +1,7 @@
 package com.example.audi.uaspenir;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Transition;
@@ -15,6 +16,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +53,11 @@ public class SignUp extends AppCompatActivity {
             nameValuePairs.add(new BasicNameValuePair("password", password.getText().toString().trim()));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             HttpResponse response = httpclient.execute(httppost);
+            String respon = EntityUtils.toString(response.getEntity());
+            if(respon.equals("true")){
+                Intent i = new Intent(SignUp.this, Login.class);
+                startActivity(i);
+            }
         } catch (Exception e){
 
         }
