@@ -251,7 +251,6 @@ public class Main extends AppCompatActivity {
                     String categoryName = c.getString("categoryName");
                     categoryArrayList.add(new category(Integer.parseInt(categoryId), categoryName));
                 }
-                new OwnLibrary().toastLong(context, "Size Arraylist category : " + categoryArrayList.size());
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -269,7 +268,6 @@ public class Main extends AppCompatActivity {
                     String category_categoryID = c.getString("Category_categoryID");
                     imagesGaming.add(new image(Integer.parseInt(imageID), imagetitle, imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
-                new OwnLibrary().toastLong(context, "Size Arraylist image gaming : " + imagesGaming.size());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -303,7 +301,6 @@ public class Main extends AppCompatActivity {
                     String category_categoryID = c.getString("Category_categoryID");
                     imagesNSFW.add(new image(Integer.parseInt(imageID), imagetitle, imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
-                new OwnLibrary().toastLong(context, "Size Arraylist image nsfw : " + imagesNSFW.size());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
