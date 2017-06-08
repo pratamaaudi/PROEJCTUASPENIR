@@ -74,7 +74,7 @@ public class detail_image extends AppCompatActivity {
     }
 
     public void comment(View view){
-        Intent i = new Intent(this, dummy_comment.class);
+        Intent i = new Intent(this, detail_comment.class);
         i.putExtra("imageid", imageid);
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
         startActivity(i, options.toBundle());

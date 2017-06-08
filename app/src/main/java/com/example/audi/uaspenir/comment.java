@@ -9,6 +9,12 @@ public class comment {
     private String isiComment;
     private String fullname;
 
+    public comment(int commentID, String isiComment, String fullname) {
+        this.commentID = commentID;
+        this.isiComment = isiComment;
+        this.fullname = fullname;
+    }
+
     public int getCommentID() {
         return commentID;
     }

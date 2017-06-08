@@ -18,11 +18,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.transition.TransitionInflater;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import org.json.JSONArray;
@@ -121,27 +119,27 @@ public class Main extends AppCompatActivity {
         imagesStudying = new ArrayList<>();
 
         //load class + baca data category
-        ReadData readCategory = new ReadData(this);
+        ReadDataMain readCategory = new ReadDataMain(this);
         readCategory.execute(OwnLibrary.url_category, "category");
 
         //load class + baca data category
-        ReadData readImageGaming = new ReadData(this);
+        ReadDataMain readImageGaming = new ReadDataMain(this);
         readImageGaming.execute(OwnLibrary.url_gaming, "gaming");
 
         //load class + baca data category
-        ReadData readImageAnimal = new ReadData(this);
+        ReadDataMain readImageAnimal = new ReadDataMain(this);
         readImageAnimal.execute(OwnLibrary.url_animal, "animal");
 
         //load class + baca data category
-        ReadData readImageNSFW = new ReadData(this);
+        ReadDataMain readImageNSFW = new ReadDataMain(this);
         readImageNSFW.execute(OwnLibrary.url_nsfw, "nsfw");
 
         //load class + baca data category
-        ReadData readImageStudying = new ReadData(this);
+        ReadDataMain readImageStudying = new ReadDataMain(this);
         readImageStudying.execute(OwnLibrary.url_studying, "studying");
 
         //load class + baca data category
-        ReadData readImageDIY = new ReadData(this);
+        ReadDataMain readImageDIY = new ReadDataMain(this);
         readImageDIY.execute(OwnLibrary.url_diy, "diy");
 
 

@@ -46,7 +46,7 @@ public class AdapterRecyclerKomeng extends RecyclerView.Adapter<RecyclerView.Vie
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int i) {
         TextView nama = (TextView) holder.itemView.findViewById(R.id.txtNama);
         TextView komen = (TextView) holder.itemView.findViewById(R.id.txtComment);
-        nama.setText("nama user e nang kene");
+        nama.setText(komeng.get(i).getFullname());
         komen.setText(komeng.get(i).getIsiComment());
     }
 
