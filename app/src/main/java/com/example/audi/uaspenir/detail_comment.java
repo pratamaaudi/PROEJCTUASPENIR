@@ -57,6 +57,9 @@ public class detail_comment extends AppCompatActivity {
         pltcomment = (EditText) findViewById(R.id.pltComment);
         btnpost = (Button) findViewById(R.id.btnPost);
 
+        Bundle extras = getIntent().getExtras();
+        imageid = extras.getInt("imageid");
+
         if (Main.login) {
             btnpost.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -73,11 +76,12 @@ public class detail_comment extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), String.valueOf(Main.userid).trim(), Toast.LENGTH_SHORT).show();
                         nameValuePairs.add(new BasicNameValuePair("isicomment", pltcomment.getText().toString().trim()));
                         nameValuePairs.add(new BasicNameValuePair("userid", String.valueOf(Main.userid)));
+                        nameValuePairs.add(new BasicNameValuePair("imageid", String.valueOf(imageid)));
                         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                         HttpResponse response = httpclient.execute(httppost);
                         String respon = EntityUtils.toString(response.getEntity());
                         buatsnackbar(respon);
-                    } catch (Exception e){
+                    } catch (Exception e) {
 
                     }
                     progressDialog.dismiss();
@@ -90,9 +94,6 @@ public class detail_comment extends AppCompatActivity {
 
         ReadDataKomeng readDataKomeng = new ReadDataKomeng(detail_comment.this);
         readDataKomeng.execute(OwnLibrary.url_komeng, "komeng");
-
-        Bundle extras = getIntent().getExtras();
-        imageid = extras.getInt("imageid");
     }
 
     public static void readDataFinish(Context context, String result, String type) {

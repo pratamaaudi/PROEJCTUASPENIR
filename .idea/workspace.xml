@@ -11,13 +11,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Main.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/detail_comment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/detail_comment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail_comment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detail_comment.xml" />
     </list>
     <ignored path="PROEJCTUASPENIR.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,14 +63,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="detail_comment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="detail_comment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/detail_comment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+            <state relative-caret-position="360">
+              <caret line="78" column="103" selection-start-line="78" selection-start-column="103" selection-end-line="78" selection-end-column="103" />
               <folding>
-                <element signature="e#2161#3740#0" expanded="true" />
-                <element signature="e#3739#3740#0" expanded="true" />
+                <element signature="e#2255#3939#0" expanded="true" />
+                <element signature="e#3938#3939#0" expanded="true" />
                 <element signature="method#readDataFinish#0;class#detail_comment#0" expanded="false" />
                 <element signature="method#setupRecyclerView#0;class#detail_comment#0" expanded="false" />
               </folding>
@@ -81,10 +78,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadDataKomeng.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReadDataKomeng.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/ReadDataKomeng.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="-17">
               <caret line="52" column="62" selection-start-line="52" selection-start-column="62" selection-end-line="52" selection-end-column="62" />
               <folding />
             </state>
@@ -94,7 +91,7 @@
       <file leaf-file-name="detail_image.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/detail_image.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="442">
               <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
               <folding />
             </state>
@@ -2742,27 +2739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/detail_image.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/detail_comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
-          <folding>
-            <element signature="e#2161#3740#0" expanded="true" />
-            <element signature="e#3739#3740#0" expanded="true" />
-            <element signature="method#readDataFinish#0;class#detail_comment#0" expanded="false" />
-            <element signature="method#setupRecyclerView#0;class#detail_comment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/Login.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -2771,11 +2747,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/detail_image.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/ReadDataKomeng.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
+        <state relative-caret-position="-17">
           <caret line="52" column="62" selection-start-line="52" selection-start-column="62" selection-end-line="52" selection-end-column="62" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/audi/uaspenir/detail_comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="78" column="103" selection-start-line="78" selection-start-column="103" selection-end-line="78" selection-end-column="103" />
+          <folding>
+            <element signature="e#2255#3939#0" expanded="true" />
+            <element signature="e#3938#3939#0" expanded="true" />
+            <element signature="method#readDataFinish#0;class#detail_comment#0" expanded="false" />
+            <element signature="method#setupRecyclerView#0;class#detail_comment#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
