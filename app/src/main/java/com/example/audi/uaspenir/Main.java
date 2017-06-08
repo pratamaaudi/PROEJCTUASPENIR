@@ -83,10 +83,13 @@ public class Main extends AppCompatActivity {
 
         if (login.equals(true)) {
             Bundle extras = getIntent().getExtras();
-            userid = extras.getInt("userid");
-            nama = extras.getString("nama");
+            if(extras!=null){
+                userid = extras.getInt("userid");
+                nama = extras.getString("nama");
 
-            buatsnackbar("selamat datang, " + nama);
+                buatsnackbar("selamat datang, " + nama);
+            }
+
 
         } else {
 
@@ -163,7 +166,8 @@ public class Main extends AppCompatActivity {
                         break;
 
                     case R.id.itemRefresh:
-                        refreshcontent();
+                        Intent intent = new Intent(Main.this, Main.class);
+                        startActivity(intent);
                 }
                 return false;
             }
