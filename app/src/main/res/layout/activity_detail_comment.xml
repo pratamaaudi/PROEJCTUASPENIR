@@ -35,5 +35,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:text="POST"
-        android:onClick="postcomment"/>
+        android:layout_marginBottom="25dp"/>
 </LinearLayout>

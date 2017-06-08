@@ -3,6 +3,7 @@ package com.example.audi.uaspenir;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.StrictMode;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -20,6 +22,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +38,7 @@ public class detail_comment extends AppCompatActivity {
     public static detail_comment instance = null;
     Integer imageid;
     EditText pltcomment;
+    Button btnpost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +54,36 @@ public class detail_comment extends AppCompatActivity {
         getWindow().setEnterTransition(a);
         komeng = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_comment);
+        pltcomment = (EditText) findViewById(R.id.pltComment);
+        btnpost = (Button) findViewById(R.id.btnPost);
 
         if (Main.login) {
+            btnpost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ProgressDialog progressDialog = new ProgressDialog(detail_comment.this);
+                    progressDialog.setMessage("Loading..");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+                    HttpClient httpclient = new DefaultHttpClient();
+                    HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/insert_comment.php");
+                    try {
+                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                        Toast.makeText(getApplicationContext(), pltcomment.getText().toString().trim(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), String.valueOf(Main.userid).trim(), Toast.LENGTH_SHORT).show();
+                        nameValuePairs.add(new BasicNameValuePair("isicomment", pltcomment.getText().toString().trim()));
+                        nameValuePairs.add(new BasicNameValuePair("userid", String.valueOf(Main.userid)));
+                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                        HttpResponse response = httpclient.execute(httppost);
+                        String respon = EntityUtils.toString(response.getEntity());
+                        buatsnackbar(respon);
+                    } catch (Exception e){
+
+                    }
+                    progressDialog.dismiss();
+                }
+            });
         } else {
-            pltcomment = (EditText) findViewById(R.id.pltComment);
-            Button btnpost = (Button) findViewById(R.id.btnPost);
             pltcomment.setVisibility(View.GONE);
             btnpost.setVisibility(View.GONE);
         }
@@ -94,23 +123,7 @@ public class detail_comment extends AppCompatActivity {
         recyclerView.setNestedScrollingEnabled(true);
     }
 
-    public void postcomment(View view) {
-        ProgressDialog progressDialog = new ProgressDialog(detail_comment.this);
-        progressDialog.setMessage("Loading..");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/login.php");
-        try {
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            nameValuePairs.add(new BasicNameValuePair("komentar", pltcomment.getText().toString().trim()));
-            nameValuePairs.add(new BasicNameValuePair("userID", String.valueOf(Main.userid).trim()));
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            HttpResponse response = httpclient.execute(httppost);
-        } catch (Exception e){
-
-        }
-        progressDialog.dismiss();
-
+    public void buatsnackbar(String text) {
+        Snackbar.make(getWindow().getDecorView().getRootView(), text, Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 }

@@ -120,7 +120,6 @@ public class Main extends AppCompatActivity {
 
         refreshcontent();
 
-
         //codingan TAB
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
