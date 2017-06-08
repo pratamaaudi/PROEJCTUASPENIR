@@ -50,6 +50,8 @@ public class Main extends AppCompatActivity {
     public static ArrayList<image> imagesGaming;
     public static ArrayList<image> imagesAnimal;
     public static ArrayList<image> imagesNSFW;
+    public static ArrayList<image> imagesDIY;
+    public static ArrayList<image> imagesStudying;
 
     public static Main instance = null;
 
@@ -86,7 +88,7 @@ public class Main extends AppCompatActivity {
             userid = extras.getInt("userid");
             nama = extras.getString("nama");
 
-            buatsnackbar("selamat datang, " +nama);
+            buatsnackbar("selamat datang, " + nama);
 
         } else {
 
@@ -115,6 +117,8 @@ public class Main extends AppCompatActivity {
         imagesGaming = new ArrayList<>();
         imagesAnimal = new ArrayList<>();
         imagesNSFW = new ArrayList<>();
+        imagesDIY = new ArrayList<>();
+        imagesStudying = new ArrayList<>();
 
         //load class + baca data category
         ReadData readCategory = new ReadData(this);
@@ -131,6 +135,15 @@ public class Main extends AppCompatActivity {
         //load class + baca data category
         ReadData readImageNSFW = new ReadData(this);
         readImageNSFW.execute(OwnLibrary.url_nsfw, "nsfw");
+
+        //load class + baca data category
+        ReadData readImageStudying = new ReadData(this);
+        readImageStudying.execute(OwnLibrary.url_studying, "studying");
+
+        //load class + baca data category
+        ReadData readImageDIY = new ReadData(this);
+        readImageDIY.execute(OwnLibrary.url_diy, "diy");
+
 
         //codingan TAB
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -244,7 +257,6 @@ public class Main extends AppCompatActivity {
             try {
                 JSONObject json = new JSONObject(result);
                 JSONArray json2 = json.getJSONArray("post");
-                categoryArrayList = new ArrayList<>();
                 for (int i = 0; i < json2.length(); i++) {
                     JSONObject c = json2.getJSONObject(i);
                     String categoryId = c.getString("categoryID");
@@ -299,6 +311,38 @@ public class Main extends AppCompatActivity {
                     String imagetitle = c.getString("imagetitle");
                     String category_categoryID = c.getString("Category_categoryID");
                     imagesNSFW.add(new image(Integer.parseInt(imageID), imagetitle, imagename, ekstensi, Integer.parseInt(category_categoryID)));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else if (type.equalsIgnoreCase("diy")) {
+            try {
+                JSONObject json = new JSONObject(result);
+                JSONArray json2 = json.getJSONArray("post");
+                for (int i = 0; i < json2.length(); i++) {
+                    JSONObject c = json2.getJSONObject(i);
+                    String imageID = c.getString("imageID");
+                    String imagename = c.getString("imagename");
+                    String ekstensi = c.getString("ekstensi");
+                    String imagetitle = c.getString("imagetitle");
+                    String category_categoryID = c.getString("Category_categoryID");
+                    imagesDIY.add(new image(Integer.parseInt(imageID), imagetitle, imagename, ekstensi, Integer.parseInt(category_categoryID)));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else if (type.equalsIgnoreCase("studying")) {
+            try {
+                JSONObject json = new JSONObject(result);
+                JSONArray json2 = json.getJSONArray("post");
+                for (int i = 0; i < json2.length(); i++) {
+                    JSONObject c = json2.getJSONObject(i);
+                    String imageID = c.getString("imageID");
+                    String imagename = c.getString("imagename");
+                    String ekstensi = c.getString("ekstensi");
+                    String imagetitle = c.getString("imagetitle");
+                    String category_categoryID = c.getString("Category_categoryID");
+                    imagesStudying.add(new image(Integer.parseInt(imageID), imagetitle, imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -389,15 +433,64 @@ public class Main extends AppCompatActivity {
         });
         fragmentGaming.mInstance(adapterRecyclerCard);
 
-        FragmentStudying fragmentStudying=new FragmentStudying();
-        FragmentDIY fragmentDIY=new FragmentDIY();
+        FragmentDIY fragmentDIY = new FragmentDIY();
+        adapterRecyclerCard = new AdapterRecyclerCard(getApplicationContext(), imagesDIY, new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position, ImageView image_post, Button btncomment) {
+                //do something here with the position
+
+
+                Intent i = new Intent(Main.this, detail_image.class);
+                i.putExtra("transition_name", ViewCompat.getTransitionName(image_post));
+                i.putExtra("nama_gambar", imagesDIY.get(position).getImagename());
+                i.putExtra("ekstensi_gambar", imagesDIY.get(position).getEkstensi());
+                i.putExtra("imageid", imagesDIY.get(position).getImageID());
+
+                Pair<View, String> p1 = Pair.create((View) image_post, ViewCompat.getTransitionName(image_post));
+                Pair<View, String> p2 = Pair.create((View) btncomment, "btn" + ViewCompat.getTransitionName(image_post));
+                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, p1, p2);
+
+                if (imagesDIY.get(position).getEkstensi().equals(".gif")) {
+                    startActivity(i);
+                } else {
+                    startActivity(i, option.toBundle());
+                }
+            }
+        });
+        fragmentDIY.mInstance(adapterRecyclerCard);
+
+        FragmentStudying fragmentStudying = new FragmentStudying();
+        adapterRecyclerCard = new AdapterRecyclerCard(getApplicationContext(), imagesStudying, new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position, ImageView image_post, Button btncomment) {
+                //do something here with the position
+
+
+                Intent i = new Intent(Main.this, detail_image.class);
+                i.putExtra("transition_name", ViewCompat.getTransitionName(image_post));
+                i.putExtra("nama_gambar", imagesStudying.get(position).getImagename());
+                i.putExtra("ekstensi_gambar", imagesStudying.get(position).getEkstensi());
+                i.putExtra("imageid", imagesStudying.get(position).getImageID());
+
+                Pair<View, String> p1 = Pair.create((View) image_post, ViewCompat.getTransitionName(image_post));
+                Pair<View, String> p2 = Pair.create((View) btncomment, "btn" + ViewCompat.getTransitionName(image_post));
+                ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Main.this, p1, p2);
+
+                if (imagesStudying.get(position).getEkstensi().equals(".gif")) {
+                    startActivity(i);
+                } else {
+                    startActivity(i, option.toBundle());
+                }
+            }
+        });
+        fragmentStudying.mInstance(adapterRecyclerCard);
 
         AdapterPager adapterPager = new AdapterPager(getSupportFragmentManager());
         adapterPager.addFragment(fragmentAnimal);
         adapterPager.addFragment(fragmentGaming);
-        adapterPager.addFragment(fragmentNSFW);
         adapterPager.addFragment(fragmentStudying);
         adapterPager.addFragment(fragmentDIY);
+        adapterPager.addFragment(fragmentNSFW);
 
         vp.setAdapter(adapterPager);
     }

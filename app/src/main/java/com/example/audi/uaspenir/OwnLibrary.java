@@ -13,6 +13,8 @@ public class OwnLibrary {
     public static String url_gaming = "http://103.52.146.34/penir/penir13/Gaming.php";
     public static String url_animal = "http://103.52.146.34/penir/penir13/Animal.php";
     public static String url_nsfw = "http://103.52.146.34/penir/penir13/NSFW.php";
+    public static String url_studying = "http://103.52.146.34/penir/penir13/Studying.php";
+    public static String url_diy = "http://103.52.146.34/penir/penir13/DIY.php";
 
     public void toastShort(Context context, String content){
         Toast.makeText(context, content, Toast.LENGTH_SHORT).show();
