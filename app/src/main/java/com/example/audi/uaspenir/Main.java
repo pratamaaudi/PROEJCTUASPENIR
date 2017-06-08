@@ -108,16 +108,6 @@ public class Main extends AppCompatActivity {
         vp = (ViewPager) findViewById(R.id.viewpager);
         tabs = (TabLayout) findViewById(R.id.tabs);
 
-        //ERWIN
-        instance = this;
-        imageArrayList = new ArrayList<>();
-        categoryArrayList = new ArrayList<>();
-        imagesGaming = new ArrayList<>();
-        imagesAnimal = new ArrayList<>();
-        imagesNSFW = new ArrayList<>();
-        imagesDIY = new ArrayList<>();
-        imagesStudying = new ArrayList<>();
-
         refreshcontent();
 
         //codingan TAB
@@ -230,6 +220,17 @@ public class Main extends AppCompatActivity {
     }
 
     public void refreshcontent(){
+        //ERWIN
+        instance = this;
+        imageArrayList = new ArrayList<>();
+        categoryArrayList = new ArrayList<>();
+        imagesGaming = new ArrayList<>();
+        imagesAnimal = new ArrayList<>();
+        imagesNSFW = new ArrayList<>();
+        imagesDIY = new ArrayList<>();
+        imagesStudying = new ArrayList<>();
+
+
         //load class + baca data category
         ReadDataMain readCategory = new ReadDataMain(this);
         readCategory.execute(OwnLibrary.url_category, "category");

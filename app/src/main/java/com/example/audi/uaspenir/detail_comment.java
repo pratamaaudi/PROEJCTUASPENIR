@@ -2,6 +2,7 @@ package com.example.audi.uaspenir;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -80,7 +81,9 @@ public class detail_comment extends AppCompatActivity {
                         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                         HttpResponse response = httpclient.execute(httppost);
                         String respon = EntityUtils.toString(response.getEntity());
-                        buatsnackbar(respon);
+                        if(respon.equals("true")){
+                            buatsnackbar("comment uploaded... ntappss");
+                        }
                     } catch (Exception e) {
 
                     }
