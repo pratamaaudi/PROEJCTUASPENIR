@@ -70,7 +70,10 @@ public class Main extends AppCompatActivity {
 
     //penanda login
     public static Boolean login = false;
-    public static String nama = "";
+
+    String nama = "";
+
+    Integer userid;
 
 
     @Override
@@ -79,7 +82,12 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (login.equals(true)) {
+            Bundle extras = getIntent().getExtras();
+            userid = extras.getInt("userid");
+            nama = extras.getString("nama");
+
             buatsnackbar("selamat datang, " +nama);
+
         } else {
 
         }

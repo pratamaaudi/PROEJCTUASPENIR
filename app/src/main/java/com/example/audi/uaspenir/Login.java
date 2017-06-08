@@ -74,8 +74,9 @@ public class Login extends AppCompatActivity {
 
             if(hasil){
                 Main.login = true;
-                Main.nama = nama;
                 Intent i = new Intent(Login.this, Main.class);
+                i.putExtra("userid", userid);
+                i.putExtra("nama", nama);
                 Pair<View, String> p1 = Pair.create(findViewById(R.id.imglogo), "imglogo");
                 ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(Login.this, p1);
                 startActivity(i, option.toBundle());
