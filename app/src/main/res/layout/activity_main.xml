@@ -41,7 +41,7 @@
                         android:layout_weight="8"
                         android:onClick="pindahhalaman"
                         android:transitionName="imglogo"
-                        app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+                        app:srcCompat="@drawable/ic_menu_black_24dp" />
 
                     <TextView
                         android:id="@+id/txtjudul"
@@ -81,7 +81,11 @@
                     android:id="@+id/dummyTab3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     android:text="Studying" />
+=======
+                    android:text="Study" />
+>>>>>>> origin/picasso-baby
 
                 <android.support.design.widget.TabItem
                     android:id="@+id/dummyTab4"

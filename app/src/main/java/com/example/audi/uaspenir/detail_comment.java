@@ -39,8 +39,8 @@ public class detail_comment extends AppCompatActivity {
         } else {
             EditText pltcomment = (EditText) findViewById(R.id.pltComment);
             Button btnpost = (Button) findViewById(R.id.btnPost);
-            pltcomment.setVisibility(View.INVISIBLE);
-            btnpost.setVisibility(View.INVISIBLE);
+            pltcomment.setVisibility(View.GONE);
+            btnpost.setVisibility(View.GONE);
         }
     }
     public static void readDataFinish(Context context, String result, String type) {
