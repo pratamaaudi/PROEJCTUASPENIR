@@ -284,7 +284,6 @@ public class Main extends AppCompatActivity {
                     String category_categoryID = c.getString("Category_categoryID");
                     imagesAnimal.add(new image(Integer.parseInt(imageID), imagetitle, imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
-                new OwnLibrary().toastLong(context, "Size Arraylist image animal : " + imagesAnimal.size());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -315,7 +314,6 @@ public class Main extends AppCompatActivity {
             @Override
             public void onItemClick(View v, int position, ImageView image_post, Button btncomment) {
                 //do something here with the position
-                new OwnLibrary().toastShort(getApplicationContext(), "Position : " + position);
 
                 Intent i = new Intent(Main.this, detail_image.class);
                 i.putExtra("transition_name", ViewCompat.getTransitionName(image_post));
@@ -342,7 +340,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onItemClick(View v, int position, ImageView image_post, Button btncomment) {
                 //do something here with the position
-                new OwnLibrary().toastShort(getApplicationContext(), "Position : " + position);
+
 
                 Intent i = new Intent(Main.this, detail_image.class);
                 i.putExtra("transition_name", ViewCompat.getTransitionName(image_post));
@@ -370,7 +368,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onItemClick(View v, int position, ImageView image_post, Button btncomment) {
                 //do something here with the position
-                new OwnLibrary().toastShort(getApplicationContext(), "Position : " + position);
+
 
                 Intent i = new Intent(Main.this, detail_image.class);
                 i.putExtra("transition_name", ViewCompat.getTransitionName(image_post));
