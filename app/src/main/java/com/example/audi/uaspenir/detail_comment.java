@@ -41,18 +41,15 @@ public class detail_comment extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_comment);
 
         if (Main.login) {
-
-
         } else {
             EditText pltcomment = (EditText) findViewById(R.id.pltComment);
             Button btnpost = (Button) findViewById(R.id.btnPost);
             pltcomment.setVisibility(View.GONE);
             btnpost.setVisibility(View.GONE);
-
-            ReadDataKomeng readDataKomeng = new ReadDataKomeng(detail_comment.this);
-            readDataKomeng.execute(OwnLibrary.url_komeng, "komeng");
-
         }
+
+        ReadDataKomeng readDataKomeng = new ReadDataKomeng(detail_comment.this);
+        readDataKomeng.execute(OwnLibrary.url_komeng, "komeng");
     }
 
     public static void readDataFinish(Context context, String result, String type) {
