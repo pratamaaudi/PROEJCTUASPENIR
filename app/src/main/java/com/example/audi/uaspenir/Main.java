@@ -312,6 +312,7 @@ public class Main extends AppCompatActivity {
                 i.putExtra("transition_name", ViewCompat.getTransitionName(image_post));
                 i.putExtra("nama_gambar", imagesNSFW.get(position).getImagename());
                 i.putExtra("ekstensi_gambar", imagesNSFW.get(position).getEkstensi());
+                i.putExtra("imageid", imagesNSFW.get(position).getImageID());
 
 
                 Pair<View, String> p1 = Pair.create((View) image_post, ViewCompat.getTransitionName(image_post));
@@ -338,6 +339,7 @@ public class Main extends AppCompatActivity {
                 i.putExtra("transition_name", ViewCompat.getTransitionName(image_post));
                 i.putExtra("nama_gambar", imagesAnimal.get(position).getImagename());
                 i.putExtra("ekstensi_gambar", imagesAnimal.get(position).getEkstensi());
+                i.putExtra("imageid", imagesAnimal.get(position).getImageID());
 
                 Pair<View, String> p1 = Pair.create((View) image_post, ViewCompat.getTransitionName(image_post));
                 Pair<View, String> p2 = Pair.create((View) btncomment, "btn" + ViewCompat.getTransitionName(image_post));
@@ -365,6 +367,7 @@ public class Main extends AppCompatActivity {
                 i.putExtra("transition_name", ViewCompat.getTransitionName(image_post));
                 i.putExtra("nama_gambar", imagesGaming.get(position).getImagename());
                 i.putExtra("ekstensi_gambar", imagesGaming.get(position).getEkstensi());
+                i.putExtra("imageid", imagesGaming.get(position).getImageID());
 
                 Pair<View, String> p1 = Pair.create((View) image_post, ViewCompat.getTransitionName(image_post));
                 Pair<View, String> p2 = Pair.create((View) btncomment, "btn" + ViewCompat.getTransitionName(image_post));
