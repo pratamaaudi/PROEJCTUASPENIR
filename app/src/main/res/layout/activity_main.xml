@@ -81,8 +81,8 @@
                     android:id="@+id/dummyTab3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Studying" />
                     android:text="Study" />
-
                 <android.support.design.widget.TabItem
                     android:id="@+id/dummyTab4"
                     android:layout_width="wrap_content"

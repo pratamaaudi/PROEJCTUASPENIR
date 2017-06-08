@@ -17,14 +17,14 @@ import java.net.URL;
  * Created by andre on 5/1/2017.
  */
 
-public class ReadData extends AsyncTask<String, String, String> {
+public class ReadDataMain extends AsyncTask<String, String, String> {
     private ProgressDialog progressDialog;
     InputStream inputStream = null;
     String result = "";
     Main ma;
     public String type = "";
 
-    public ReadData(Main ma) {
+    public ReadDataMain(Main ma) {
         progressDialog = new ProgressDialog(ma);
         this.ma = ma;
     }
@@ -36,7 +36,7 @@ public class ReadData extends AsyncTask<String, String, String> {
         progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
-                ReadData.this.cancel(true);
+                ReadDataMain.this.cancel(true);
             }
         });
     }
