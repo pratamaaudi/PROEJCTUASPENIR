@@ -256,8 +256,9 @@ public class Main extends AppCompatActivity {
                     String imageID = c.getString("imageID");
                     String imagename = c.getString("imagename");
                     String ekstensi = c.getString("ekstensi");
+                    String imagetitle = c.getString("imagetitle");
                     String category_categoryID = c.getString("Category_categoryID");
-                    imagesGaming.add(new image(Integer.parseInt(imageID), "imagetitle", imagename, ekstensi, Integer.parseInt(category_categoryID)));
+                    imagesGaming.add(new image(Integer.parseInt(imageID), imagetitle, imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
                 new OwnLibrary().toastLong(context, "Size Arraylist image gaming : " + imagesGaming.size());
             } catch (JSONException e) {
@@ -272,8 +273,9 @@ public class Main extends AppCompatActivity {
                     String imageID = c.getString("imageID");
                     String imagename = c.getString("imagename");
                     String ekstensi = c.getString("ekstensi");
+                    String imagetitle = c.getString("imagetitle");
                     String category_categoryID = c.getString("Category_categoryID");
-                    imagesAnimal.add(new image(Integer.parseInt(imageID), "imagetitle", imagename, ekstensi, Integer.parseInt(category_categoryID)));
+                    imagesAnimal.add(new image(Integer.parseInt(imageID), imagetitle, imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
                 new OwnLibrary().toastLong(context, "Size Arraylist image animal : " + imagesAnimal.size());
             } catch (JSONException e) {
@@ -288,8 +290,9 @@ public class Main extends AppCompatActivity {
                     String imageID = c.getString("imageID");
                     String imagename = c.getString("imagename");
                     String ekstensi = c.getString("ekstensi");
+                    String imagetitle = c.getString("imagetitle");
                     String category_categoryID = c.getString("Category_categoryID");
-                    imagesNSFW.add(new image(Integer.parseInt(imageID), "imagetitle", imagename, ekstensi, Integer.parseInt(category_categoryID)));
+                    imagesNSFW.add(new image(Integer.parseInt(imageID), imagetitle, imagename, ekstensi, Integer.parseInt(category_categoryID)));
                 }
                 new OwnLibrary().toastLong(context, "Size Arraylist image nsfw : " + imagesNSFW.size());
             } catch (JSONException e) {
