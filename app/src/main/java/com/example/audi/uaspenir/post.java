@@ -66,7 +66,7 @@ public class post extends DialogFragment {
         btnpost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new PostTask().execute(imageToString(bmp), txtjudul.getText().toString(),".jpg","1");
+                new PostTask().execute(imageToString(bmp), txtjudul.getText().toString(),".jpg","5");
             }
         });
 
