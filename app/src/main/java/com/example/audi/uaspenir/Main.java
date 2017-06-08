@@ -514,9 +514,9 @@ public class Main extends AppCompatActivity {
     }
 
     //WTF IKI
-    public void lordmoses(View view) {
+    public void header(View view) {
         //ndak perlu di jelasin
-        buatsnackbar("ALL HAIL LORD MOSES !!!!");
+        buatsnackbar("WELCOME TO 8 GAG");
     }
 
     public void ambilfoto(View view) {

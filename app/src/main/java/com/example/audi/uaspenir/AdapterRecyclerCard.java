@@ -95,7 +95,6 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
     }
 
     public void loadkomen(ArrayList<image> array, int position) {
-        Toast.makeText(context, "ambil komentar untuk gambar : " + array.get(position).getImagename(), Toast.LENGTH_SHORT).show();
         Intent i = new Intent(context, detail_comment.class);
         i.putExtra("imageid",array.get(position).getImageID());
         context.startActivity(i);

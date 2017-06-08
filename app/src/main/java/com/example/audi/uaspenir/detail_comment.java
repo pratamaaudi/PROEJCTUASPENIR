@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -78,17 +77,12 @@ public class detail_comment extends AppCompatActivity {
                     HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/insert_comment.php");
                     try {
                         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-                        Toast.makeText(getApplicationContext(), pltcomment.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), String.valueOf(Main.userid).trim(), Toast.LENGTH_SHORT).show();
                         nameValuePairs.add(new BasicNameValuePair("isicomment", pltcomment.getText().toString().trim()));
                         nameValuePairs.add(new BasicNameValuePair("userid", String.valueOf(Main.userid)));
                         nameValuePairs.add(new BasicNameValuePair("imageid", String.valueOf(imageid)));
                         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                         HttpResponse response = httpclient.execute(httppost);
                         String respon = EntityUtils.toString(response.getEntity());
-                        if(respon.equals("true")){
-                            buatsnackbar("comment uploaded... ntappss");
-                        }
                         pltcomment.setText("");
                     } catch (Exception e) {
 
@@ -113,10 +107,6 @@ public class detail_comment extends AppCompatActivity {
         recyclerView.setNestedScrollingEnabled(true);
     }
 
-    public void buatsnackbar(String text) {
-        Snackbar.make(getWindow().getDecorView().getRootView(), text, Snackbar.LENGTH_LONG).setAction("Action", null).show();
-    }
-
     public void loadkomeng(){
         komeng = new ArrayList<>();
         ProgressDialog progressDialog = new ProgressDialog(detail_comment.this);
@@ -127,8 +117,6 @@ public class detail_comment extends AppCompatActivity {
         HttpPost httppost = new HttpPost("http://103.52.146.34/penir/penir13/comment.php");
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            Toast.makeText(getApplicationContext(), pltcomment.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(), String.valueOf(Main.userid).trim(), Toast.LENGTH_SHORT).show();
             nameValuePairs.add(new BasicNameValuePair("imageid", String.valueOf(imageid)));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             HttpResponse response = httpclient.execute(httppost);
