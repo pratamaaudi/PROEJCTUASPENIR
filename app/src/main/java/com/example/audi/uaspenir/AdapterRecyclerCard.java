@@ -62,12 +62,18 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
 
         Picasso.with(context).load("http://103.52.146.34/penir/penir13/IMAGE/" + images.get(position).getImagename() + images.get(position).getEkstensi()).into(holder.image_card);
 
-        holder.btncomment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadkomen(images, position);
-            }
-        });
+
+            holder.btncomment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try{
+                        loadkomen(images, position);
+                    }catch (Exception e){
+                        Log.d("commentbutton", e.toString());
+                    }
+
+                }
+            });
 
 
 
@@ -96,6 +102,7 @@ public class AdapterRecyclerCard extends RecyclerView.Adapter<AdapterRecyclerCar
 
     public void loadkomen(ArrayList<image> array, int position) {
         Intent i = new Intent(context, detail_comment.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         i.putExtra("imageid",array.get(position).getImageID());
         context.startActivity(i);
     }
